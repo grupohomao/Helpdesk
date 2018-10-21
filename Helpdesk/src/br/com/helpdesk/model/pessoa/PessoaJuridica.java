@@ -43,4 +43,10 @@ public class PessoaJuridica extends Pessoa implements IPessoa {
     public String getTipoPessoa() {
         return "PessoaJuridica";
     }
+
+    @Override
+    public String toString() {
+        return "PessoaJuridica{" + "cnpj=" + cnpj + ", ie=" + ie + '}';
+    }
+    
 }

@@ -43,6 +43,10 @@ public class Cargo {
     public void setAtivo(String ativo) {
         this.ativo = ativo;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Cargo{" + "codigo=" + codigo + ", descricao=" + descricao + ", ativo=" + ativo + '}';
+    }
     
 }

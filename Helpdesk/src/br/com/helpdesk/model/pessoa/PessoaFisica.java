@@ -39,8 +39,10 @@ public class PessoaFisica extends Pessoa implements IPessoa {
         this.profissao = profissao;
     }
 
-
-  
+    @Override
+    public String toString() {
+        return "PessoaFisica{" + "cpf=" + cpf + ", profissao=" + profissao + '}';
+    }
 
     @Override
     public String getTipoPessoa() {

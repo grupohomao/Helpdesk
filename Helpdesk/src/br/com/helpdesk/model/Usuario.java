@@ -70,6 +70,11 @@ public class Usuario {
     public void setAtivo(String ativo) {
         this.ativo = ativo;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "codigo=" + codigo + ", codigoNivel=" + codigoNivel + ", usuario=" + usuario + ", senha=" + senha + ", ativo=" + ativo + '}';
+    }
     
         /**
      * <b>definePessoa</b> Classe responsável definir se a pessoa é física ou

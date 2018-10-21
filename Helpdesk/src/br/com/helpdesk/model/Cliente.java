@@ -63,6 +63,11 @@ public class Cliente {
     public void setPessoa(IPessoa pessoa) {
         this.pessoa = pessoa;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "codigo=" + codigo + ", usuario=" + usuario + ", ativo=" + ativo + ", pessoa=" + pessoa + '}';
+    }
     
 }
 

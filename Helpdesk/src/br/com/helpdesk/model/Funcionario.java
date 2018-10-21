@@ -45,6 +45,10 @@ public class Funcionario {
     public void setPessoa(IPessoa pessoa) {
         this.pessoa = pessoa;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Funcionario{" + "codigo=" + codigo + ", usuario=" + usuario + ", cargo=" + cargo + ", ativo=" + ativo + ", pessoa=" + pessoa + '}';
+    }
     
 }
