@@ -6,22 +6,23 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- * <b>Conexao[DAL]</b> Classe responsável por realizar o constrole e
- * gerenciamento da conexão com o BD.
+ * Conexao[DAL] Classe responsável por realizar o constrole e gerenciamento da
+ * conexão com o BD.
  *
  *
- * @author <Ricardo.Guntzell>
+ * @author Ricardo.Guntzell
  */
-public class Conexao {
+public abstract class Conexao {
 
-    Connection conexao = null;
+    protected static Connection conexao = null;
+
     private final String servidor = "localhost";
     private final String porta = "3306";
     private final String sgbd = "mysql";
     private final String database = "helpdesk";
     private final String tipoConexao = "jdbc";
     private final String usuario = "root";
-    private final String senha = "";
+    private final String senha = "root";
 
     /** <b>Construtor</b>
      */

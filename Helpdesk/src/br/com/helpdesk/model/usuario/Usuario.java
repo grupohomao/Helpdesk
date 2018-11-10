@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package br.com.helpdesk.model;
+package br.com.helpdesk.model.usuario;
 
 /**
+ * Usuario [MODEL][USUARIO] Classe responsável por realizar o constrole, gerenciamento e
+ * regra de negócios dos dados de Usuario.
  *
- * @author rrica
+ * @author Ricardo Guntzell
  */
 public class Usuario {
+
     private int codigo;
     private int codigoNivel;
     private String usuario;
@@ -75,28 +73,4 @@ public class Usuario {
     public String toString() {
         return "Usuario{" + "codigo=" + codigo + ", codigoNivel=" + codigoNivel + ", usuario=" + usuario + ", senha=" + senha + ", ativo=" + ativo + '}';
     }
-    
-        /**
-     * <b>definePessoa</b> Classe responsável definir se a pessoa é física ou
-     * jurídica.
-     *
-     * @param tipo int. 1 = PF ou 2 = PJ.
-     * @return Object Pessoa.
-     */
-//    public Object defineUsuario(int tipo) {
-//
-//        switch (tipo) {
-//            case 1:
-//                PessoaFisica pf = new PessoaFisica();
-//                this.Pessoa = pf;
-//
-//            case 2:
-//                PessoaJuridica pj = new PessoaJuridica();
-//                this.Pessoa = pj;
-//
-//            default:
-//                return null;
-//        }
-//    }
-    
 }

@@ -10,7 +10,7 @@ import br.com.helpdesk.model.Cliente;
 import br.com.helpdesk.model.Endereco;
 import br.com.helpdesk.model.Funcionario;
 import br.com.helpdesk.model.Telefone;
-import br.com.helpdesk.model.Usuario;
+import br.com.helpdesk.model.usuario.Usuario;
 import br.com.helpdesk.model.pessoa.PessoaFisica;
 import br.com.helpdesk.model.pessoa.PessoaJuridica;
 
@@ -22,7 +22,7 @@ public class App {
 
     public static void main(String[] args) {
         //Conexao con = new Conexao();
-
+/*
         Endereco end1 = new Endereco("12377-555", "SP", "São Paulo", "rua bla", 777);
         Endereco end2 = new Endereco("12377-444", "SP", "São Paulo", "rua foo", 897);
         Endereco end3 = new Endereco("12377-333", "SP", "São Paulo", "rua xxx", 69);
@@ -76,6 +76,6 @@ public class App {
 
         System.out.println(cli1.toString() + "\n" + usu1.toString() + "\n" + pf1.toString() + "\n\n");
         System.out.println(cli2.toString() + "\n" + usu2.toString() + "\n" + pf2.toString() + "\n\n");
-
+         */
     }
 }

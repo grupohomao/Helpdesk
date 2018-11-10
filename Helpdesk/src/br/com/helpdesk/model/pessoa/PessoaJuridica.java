@@ -1,23 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.helpdesk.model.pessoa;
 
+import br.com.helpdesk.model.Email;
 import br.com.helpdesk.model.Endereco;
 import br.com.helpdesk.model.Telefone;
 
 /**
+ * PessoaJuridica [MODEL][PESSOA] Classe responsável por realizar o constrole,
+ * gerenciamento e regra de negócios dos dados de PessoaJuridica.
  *
- * @author rrica
+ * @author Ricardo Guntzell
  */
 public class PessoaJuridica extends Pessoa implements IPessoa {
 
     private String cnpj;
     private String ie;
 
-    public PessoaJuridica(String cnpj, String ie, String nome, String email, Telefone telefone, Endereco endereco) {
+    public PessoaJuridica(String cnpj, String ie, String nome, Email email, Telefone telefone, Endereco endereco) {
         super(nome, email, telefone, endereco);
         this.cnpj = cnpj;
         this.ie = ie;
@@ -48,5 +46,5 @@ public class PessoaJuridica extends Pessoa implements IPessoa {
     public String toString() {
         return "PessoaJuridica{" + "cnpj=" + cnpj + ", ie=" + ie + '}';
     }
-    
+
 }

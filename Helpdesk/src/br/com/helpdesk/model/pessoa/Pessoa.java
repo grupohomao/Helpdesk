@@ -1,25 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.helpdesk.model.pessoa;
 
+import br.com.helpdesk.model.Email;
 import br.com.helpdesk.model.Endereco;
 import br.com.helpdesk.model.Telefone;
 
 /**
+ * Pessoa [MODEL][PESSOA] Classe Abstrata responsável por definir as
+ * responsabilidades em comum das outras classes de Pessoa.
  *
- * @author rrica
+ * @author Ricardo Guntzell
  */
 public abstract class Pessoa {
 
     protected String nome;
-    protected String email;
+    protected Email email;
     protected Telefone telefone;
     protected Endereco endereco;
 
-    public Pessoa(String nome, String email, Telefone telefone, Endereco endereco) {
+    public Pessoa(String nome, Email email, Telefone telefone, Endereco endereco) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
@@ -34,11 +32,11 @@ public abstract class Pessoa {
         this.nome = nome;
     }
 
-    public String getEmail() {
+    public Email getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Email email) {
         this.email = email;
     }
 
@@ -58,6 +56,4 @@ public abstract class Pessoa {
         this.endereco = endereco;
     }
 
-    
-    
 }

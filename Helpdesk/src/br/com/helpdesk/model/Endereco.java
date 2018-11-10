@@ -1,36 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.helpdesk.model;
 
 /**
+ * Endereco [MODEL] Classe responsável por realizar o constrole, gerenciamento e
+ * regra de negócios dos dados de Endereco.
  *
- * @author rrica
+ * @author Ricardo Guntzell
  */
 public class Endereco {
 
-    private String cep;
+    private int id;
     private String uf;
     private String cidade;
     private String logradouro;
-    private int numero;
+    private String cep;
+    private String numero;
+    private String complemento;
 
-    public Endereco(String cep, String uf, String cidade, String logradouro, int numero) {
-        this.cep = cep;
+    public Endereco(int id, String uf, String cidade, String logradouro, String cep, String numero, String complemento) {
+        this.id = id;
         this.uf = uf;
         this.cidade = cidade;
         this.logradouro = logradouro;
-        this.numero = numero;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
         this.cep = cep;
+        this.numero = numero;
+        this.complemento = complemento;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUf() {
@@ -57,12 +58,28 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
-    public int getNumero() {
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
 
 }

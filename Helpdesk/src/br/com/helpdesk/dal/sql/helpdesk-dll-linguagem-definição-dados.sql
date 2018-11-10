@@ -6,16 +6,65 @@
 CREATE DATABASE helpdesk;
 USE helpdesk;
 
-/** Tabelas de tipos: */
+/*Tabelas de Tipos(Catagorias):*/
 
-/** Niveis - Níveis de usuário */
-CREATE TABLE Niveis(
-id_nivel INT UNSIGNED NOT NULL AUTO_INCREMENT,
-nivel_descricao VARCHAR(50) NOT NULL,
-nivel_ativo ENUM('S','N') DEFAULT 'S',
-nivel_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
-PRIMARY KEY (id_nivel),
-UNIQUE(nivel_descricao)
+/*Nivels - Níveis de usuário */
+CREATE TABLE Niveis (
+    id_nivel TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nivel_descricao VARCHAR(20) NOT NULL,
+    nivel_forca TINYINT(10) NOT NULL,
+    nivel_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
+    UNIQUE(nivel_descricao),
+    PRIMARY KEY (id_nivel)
+);
+
+/*Endereco - Endereco das pessoas*/
+CREATE TABLE Endereco (
+    id_endereco INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_pessoa INT UNSIGNED NOT NULL,
+    endereco_uf VARCHAR(5) NOT NULL,
+    endereco_cidade VARCHAR(50) NOT NULL,
+    endereco_logradouro VARCHAR(50) NOT NULL,
+    endereco_cep VARCHAR(10) NOT NULL,
+    endereco_numero VARCHAR(10) NOT NULL,
+    endereco_complemento VARCHAR(100) NOT NULL,
+    endereco_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
+    PRIMARY KEY (id_endereco)
+);
+
+/*Telefone - Telefone das pessoas*/
+CREATE TABLE Telefone (
+    id_telefone INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_pessoa INT UNSIGNED NOT NULL,
+    telefone_tipo VARCHAR(20) NOT NULL,
+    telefone_ddd VARCHAR(20) NOT NULL,
+    telefone_numero VARCHAR(20) NOT NULL,
+    telefone_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
+    UNIQUE(telefone_numero),
+    PRIMARY KEY (id_telefone)
+);
+
+/*Email - Email das pessoas*/
+CREATE TABLE Email (
+    id_email INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_pessoa INT UNSIGNED NOT NULL,
+    email_descricao VARCHAR(100) NOT NULL,
+    email_tipo VARCHAR(50) NOT NULL,
+    email_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
+    UNIQUE (email_descricao),
+    PRIMARY KEY (id_email)
+);
+
+/*Pessoa - Dados de pessoa*/
+CREATE TABLE Pessoa (
+    id_pessoa	 INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_pessoa INT UNSIGNED NOT NULL,
+    telefone_tipo VARCHAR(20) NOT NULL,
+    telefone_ddd VARCHAR(20) NOT NULL,
+    telefone_numero VARCHAR(20) NOT NULL,
+    telefone_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
+    UNIQUE(telefone_numero),
+    PRIMARY KEY (id_telefone)
 );
 
 /** Usuários */

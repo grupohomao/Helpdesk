@@ -1,19 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.helpdesk.model;
 
+import br.com.helpdesk.model.usuario.Usuario;
 import br.com.helpdesk.model.pessoa.IPessoa;
 
 /**
- * <b>Cliente</b> Classe responsável por realizar a regra de negócios com os
- * dados de cliente.
+ * Cliente [MODEL] Classe responsável por realizar o constrole, gerenciamento e
+ * regra de negócios dos dados de Cliente.
  *
- * @author Ricardo Guntzell.
+ * @author Ricardo Guntzell
  */
 public class Cliente {
+
     private int codigo;
     private Usuario usuario;
     private String ativo;
@@ -31,7 +28,7 @@ public class Cliente {
         this.ativo = ativo;
         this.pessoa = pessoa;
     }
-    
+
     public int getCodigo() {
         return codigo;
     }
@@ -68,30 +65,5 @@ public class Cliente {
     public String toString() {
         return "Cliente{" + "codigo=" + codigo + ", usuario=" + usuario + ", ativo=" + ativo + ", pessoa=" + pessoa + '}';
     }
-    
-}
 
-//    /**
-//     * <b>definePessoa</b> Classe responsável definir se a pessoa é física ou
-//     * jurídica.
-//     *
-//     * @param tipo int. 1 = PF ou 2 = PJ.
-//     * @return Object Pessoa.
-//     */
-//    public Object definePessoa(int tipo) {
-//
-//        switch (tipo) {
-//            case 1:
-//                PessoaFisica pf = new PessoaFisica();
-//                this.Pessoa = pf;
-//
-//            case 2:
-//                PessoaJuridica pj = new PessoaJuridica();
-//                this.Pessoa = pj;
-//
-//            default:
-//                return null;
-//        }
-//    }
-//
-//}
+}

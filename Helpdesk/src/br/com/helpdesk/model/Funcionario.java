@@ -1,17 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.helpdesk.model;
 
+import br.com.helpdesk.model.usuario.Usuario;
 import br.com.helpdesk.model.pessoa.IPessoa;
 
 /**
+ * Funcionario [MODEL] Classe responsável por realizar o constrole, gerenciamento e
+ * regra de negócios dos dados de Funcionario.
  *
- * @author rrica
+ * @author Ricardo Guntzell
  */
 public class Funcionario {
+
     private int codigo;
     private Usuario usuario;
     private Cargo cargo;
@@ -50,5 +49,5 @@ public class Funcionario {
     public String toString() {
         return "Funcionario{" + "codigo=" + codigo + ", usuario=" + usuario + ", cargo=" + cargo + ", ativo=" + ativo + ", pessoa=" + pessoa + '}';
     }
-    
+
 }

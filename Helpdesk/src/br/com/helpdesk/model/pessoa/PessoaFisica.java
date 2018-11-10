@@ -1,23 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.helpdesk.model.pessoa;
 
+import br.com.helpdesk.model.Email;
 import br.com.helpdesk.model.Endereco;
 import br.com.helpdesk.model.Telefone;
 
 /**
+ * PessoaFisica [MODEL][PESSOA] Classe responsável por realizar o constrole,
+ * gerenciamento e regra de negócios dos dados de PessoaFisica.
  *
- * @author rrica
+ * @author Ricardo Guntzell
  */
 public class PessoaFisica extends Pessoa implements IPessoa {
 
     protected String cpf;
     protected String profissao;
 
-    public PessoaFisica(String cpf, String profissao, String nome, String email, Telefone telefone, Endereco endereco) {
+    public PessoaFisica(String cpf, String profissao, String nome, Email email, Telefone telefone, Endereco endereco) {
         super(nome, email, telefone, endereco);
         this.cpf = cpf;
         this.profissao = profissao;

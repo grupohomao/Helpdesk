@@ -1,24 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.helpdesk.model;
 
 /**
+ * Telefone [MODEL] Classe responsável por realizar o constrole, gerenciamento e
+ * regra de negócios dos dados de Telefone.
  *
- * @author rrica
+ * @author Ricardo Guntzell
  */
 public class Telefone {
 
+    private int id;
     private String tipo;
     private String ddd;
     private String numero;
 
-    public Telefone(String tipo, String ddd, String numero) {
+    public Telefone(int id, String tipo, String ddd, String numero) {
+        this.id = id;
         this.tipo = tipo;
         this.ddd = ddd;
         this.numero = numero;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTipo() {
