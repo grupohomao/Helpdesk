@@ -20,6 +20,16 @@ public class Telefone {
         this.numero = numero;
     }
 
+    public Telefone(String tipo, String ddd, String numero) {
+        this.tipo = tipo;
+        this.ddd = ddd;
+        this.numero = numero;
+    }
+
+    public Telefone() {
+    }
+    
+    
     public int getId() {
         return id;
     }

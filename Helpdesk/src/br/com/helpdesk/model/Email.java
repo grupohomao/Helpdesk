@@ -18,6 +18,14 @@ public class Email {
         this.tipo = tipo;
     }
 
+    public Email(String descricao, String tipo) {
+        this.descricao = descricao;
+        this.tipo = tipo;
+    }
+
+    public Email() {
+    }
+
     public int getId() {
         return id;
     }

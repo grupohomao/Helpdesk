@@ -5,7 +5,13 @@
  */
 package br.com.helpdesk.view;
 
-import java.awt.event.KeyEvent;
+import br.com.helpdesk.controller.DelegaUsuario;
+import br.com.helpdesk.model.Cliente;
+import br.com.helpdesk.model.Funcionario;
+import br.com.helpdesk.model.usuario.Usuario;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,11 +36,11 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextFieldUsuario = new javax.swing.JTextField();
-        jPasswordFieldSenha = new javax.swing.JPasswordField();
+        jtxtUsuario = new javax.swing.JTextField();
+        jtxtSenha = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
-        jButtonEntrar = new javax.swing.JButton();
-        jButtonSair = new javax.swing.JButton();
+        jbtEntrar = new javax.swing.JButton();
+        jbtnSair = new javax.swing.JButton();
         lblUSUARIO = new javax.swing.JLabel();
         lblSENHA = new javax.swing.JLabel();
         FUNDO = new javax.swing.JLabel();
@@ -43,16 +49,16 @@ public class Login extends javax.swing.JFrame {
         setTitle("Login");
         setResizable(false);
         getContentPane().setLayout(null);
-        getContentPane().add(jTextFieldUsuario);
-        jTextFieldUsuario.setBounds(240, 160, 150, 30);
+        getContentPane().add(jtxtUsuario);
+        jtxtUsuario.setBounds(240, 160, 170, 30);
 
-        jPasswordFieldSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+        jtxtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jPasswordFieldSenhaKeyPressed(evt);
+                jtxtSenhaKeyPressed(evt);
             }
         });
-        getContentPane().add(jPasswordFieldSenha);
-        jPasswordFieldSenha.setBounds(240, 210, 150, 30);
+        getContentPane().add(jtxtSenha);
+        jtxtSenha.setBounds(240, 210, 170, 30);
 
         jLabel2.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -60,23 +66,23 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(150, 10, 320, 40);
 
-        jButtonEntrar.setText("Entrar");
-        jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
+        jbtEntrar.setText("Entrar");
+        jbtEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEntrarActionPerformed(evt);
+                jbtEntrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonEntrar);
-        jButtonEntrar.setBounds(240, 250, 70, 32);
+        getContentPane().add(jbtEntrar);
+        jbtEntrar.setBounds(240, 250, 70, 32);
 
-        jButtonSair.setText("Sair");
-        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+        jbtnSair.setText("Cancelar");
+        jbtnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSairActionPerformed(evt);
+                jbtnSairActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSair);
-        jButtonSair.setBounds(320, 250, 70, 32);
+        getContentPane().add(jbtnSair);
+        jbtnSair.setBounds(320, 250, 90, 32);
 
         lblUSUARIO.setForeground(new java.awt.Color(255, 255, 255));
         lblUSUARIO.setText("USUÁRIO ");
@@ -96,36 +102,32 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
-        
-        if(jTextFieldUsuario.getText().equals("Murilo")&&jPasswordFieldSenha.getText().equals("1234")){
-        Menu tela = new Menu();
-                      tela.setVisible(true);
-        dispose();
-    }                                              
-        else{
-            JOptionPane.showMessageDialog(rootPane, "Acesso Negado!");
-        }
-    }//GEN-LAST:event_jButtonEntrarActionPerformed
+    private void jbtEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtEntrarActionPerformed
+        String usuario = jtxtUsuario.getText();
+        String senha = jtxtSenha.getText();
+        String acao = "logar";
 
-    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-        
-        
-        System.exit(0);
-    }//GEN-LAST:event_jButtonSairActionPerformed
-
-    private void jPasswordFieldSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldSenhaKeyPressed
-        
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
-            if(jTextFieldUsuario.getText().equals("Murilo")&&jPasswordFieldSenha.getText().equals("1234")){
-        Menu tela = new Menu();
-                      tela.setVisible(true);
-        dispose();
-    }                                              
-        else{
-            JOptionPane.showMessageDialog(rootPane, "Acesso Negado!");
+        if (usuario.trim().isEmpty() || senha.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        } else {
+            Usuario usu = new Usuario(usuario, senha);
+            try {
+                new DelegaUsuario().acoes(acao, usu, null, null);
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-    }//GEN-LAST:event_jPasswordFieldSenhaKeyPressed
+
+    }//GEN-LAST:event_jbtEntrarActionPerformed
+
+    private void jbtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSairActionPerformed
+        jtxtUsuario.setText("");
+        jtxtSenha.setText("");
+    }//GEN-LAST:event_jbtnSairActionPerformed
+
+    private void jtxtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtSenhaKeyPressed
+
+    }//GEN-LAST:event_jtxtSenhaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -167,11 +169,11 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FUNDO;
-    private javax.swing.JButton jButtonEntrar;
-    private javax.swing.JButton jButtonSair;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField jPasswordFieldSenha;
-    private javax.swing.JTextField jTextFieldUsuario;
+    private javax.swing.JButton jbtEntrar;
+    private javax.swing.JButton jbtnSair;
+    private javax.swing.JPasswordField jtxtSenha;
+    private javax.swing.JTextField jtxtUsuario;
     private javax.swing.JLabel lblSENHA;
     private javax.swing.JLabel lblUSUARIO;
     // End of variables declaration//GEN-END:variables

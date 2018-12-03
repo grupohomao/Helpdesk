@@ -18,6 +18,13 @@ public class Cargo {
         this.ativo = ativo;
     }
 
+    public Cargo(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Cargo() {
+    }
+
     public int getCodigo() {
         return codigo;
     }

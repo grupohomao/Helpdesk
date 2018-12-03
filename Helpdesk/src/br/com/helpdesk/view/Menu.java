@@ -5,9 +5,15 @@
  */
 package br.com.helpdesk.view;
 
+import br.com.helpdesk.model.usuario.Usuario;
+import br.com.helpdesk.session.Sessao;
 import br.com.helpdesk.view.cadastro.*;
 import br.com.helpdesk.view.chamado.*;
 import br.com.helpdesk.view.relatorio.*;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -164,6 +170,11 @@ public class Menu extends javax.swing.JFrame {
         jButton9.setBounds(10, 360, 140, 60);
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(160, 350, 340, 160);
 
@@ -372,15 +383,33 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButtonCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarUsuarioActionPerformed
 
-        JFrame Usuario = new Usuario();
-        Usuario.setVisible(true);
+        try {
+            JFrame UsuarioView = null;
+            try {
+                UsuarioView = new UsuarioView();
+            } catch (ParseException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            UsuarioView.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jButtonCadastrarUsuarioActionPerformed
 
     private void jMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUsuariosActionPerformed
 
-        JFrame Usuario = new Usuario();
-        Usuario.setVisible(true);
+        try {
+            JFrame UsuarioView = null;
+            try {
+                UsuarioView = new UsuarioView();
+            } catch (ParseException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            UsuarioView.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jMenuUsuariosActionPerformed
 
@@ -415,6 +444,10 @@ public class Menu extends javax.swing.JFrame {
         JFrame RelatorioHistorico = new RelatorioHistorico();
         RelatorioHistorico.setVisible(true);
     }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -22,6 +22,11 @@ public class Nivel {
         this.descricao = descricao;
         this.forca = forca;
     }
+
+    public Nivel(int id, String descricao) {
+        this.id = id;
+        this.descricao = descricao;
+    }
     
     public Nivel(int id) {
         this.id = id;

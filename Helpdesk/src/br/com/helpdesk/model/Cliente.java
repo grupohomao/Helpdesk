@@ -1,7 +1,8 @@
 package br.com.helpdesk.model;
 
 import br.com.helpdesk.model.usuario.Usuario;
-import br.com.helpdesk.model.pessoa.IPessoa;
+import br.com.helpdesk.model.pessoa.PessoaFisica;
+import br.com.helpdesk.model.pessoa.PessoaJuridica;
 
 /**
  * Cliente [MODEL] Classe responsável por realizar o constrole, gerenciamento e
@@ -11,30 +12,35 @@ import br.com.helpdesk.model.pessoa.IPessoa;
  */
 public class Cliente {
 
-    private int codigo;
+    private int id;
     private Usuario usuario;
     private String ativo;
-    private IPessoa pessoa;
+    private PessoaFisica pf;
+    private PessoaJuridica pj;
 
-    public Cliente(int codigo, Usuario usuario, String ativo, IPessoa pessoa) {
-        this.codigo = codigo;
+    public Cliente(int id, Usuario usuario, String ativo, PessoaFisica pf, PessoaJuridica pj) {
+        this.id = id;
         this.usuario = usuario;
         this.ativo = ativo;
-        this.pessoa = pessoa;
+        this.pf = pf;
+        this.pj = pj;
     }
 
-    public Cliente(Usuario usuario, String ativo, IPessoa pessoa) {
+    public Cliente(Usuario usuario, PessoaFisica pf, PessoaJuridica pj) {
         this.usuario = usuario;
-        this.ativo = ativo;
-        this.pessoa = pessoa;
+        this.pf = pf;
+        this.pj = pj;
+    }
+    
+    public Cliente() {
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Usuario getUsuario() {
@@ -53,17 +59,21 @@ public class Cliente {
         this.ativo = ativo;
     }
 
-    public IPessoa getPessoa() {
-        return pessoa;
+    public PessoaFisica getPf() {
+        return pf;
     }
 
-    public void setPessoa(IPessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setPf(PessoaFisica pf) {
+        this.pf = pf;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente{" + "codigo=" + codigo + ", usuario=" + usuario + ", ativo=" + ativo + ", pessoa=" + pessoa + '}';
+    public PessoaJuridica getPj() {
+        return pj;
     }
 
+    public void setPj(PessoaJuridica pj) {
+        this.pj = pj;
+    }
+    
+        
 }

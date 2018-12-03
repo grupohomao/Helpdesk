@@ -22,7 +22,7 @@ public abstract class Conexao {
     private final String database = "helpdesk";
     private final String tipoConexao = "jdbc";
     private final String usuario = "root";
-    private final String senha = "root";
+    private final String senha = "";
 
     /** <b>Construtor</b>
      */

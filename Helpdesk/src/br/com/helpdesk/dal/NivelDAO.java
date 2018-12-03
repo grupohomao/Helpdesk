@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- * NivelDAO [DAL] Classe responsável por realizar o constrole e gerenciamento dos
- * dados com o banco de dados.
+ * NivelDAO [DAL] Classe responsável por realizar o constrole e gerenciamento
+ * dos dados com o banco de dados.
  *
  * @author Ricardo Guntzell
  */
@@ -42,7 +42,9 @@ public class NivelDAO extends Conexao {
             this.getConexao().setAutoCommit(false);
 
             //Query.
-            String sql = "SELECT * FROM Niveis";
+            String sql = "SELECT * FROM Niveis ";
+            sql += "WHERE 1=1 ";
+            sql += "AND nivel_forca < 10 ";
 
             //Prepara a instrução SQL
             pst = this.getConexao().prepareStatement(sql);
@@ -80,7 +82,7 @@ public class NivelDAO extends Conexao {
 
     /**
      * <b>verificaNivel</b>
-     * Método responsável por listar os níveis cadastrados.
+     * Método responsável por verificar se o nível já está cadastrado.
      *
      * @param Nivel (Object).
      * @return Boolean.

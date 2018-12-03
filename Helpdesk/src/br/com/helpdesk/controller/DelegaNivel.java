@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * DelegaNivel [CONTROLLER] Classe responsável por realizar o constrole das
- * ações de todas as classes.
+ * ações de Nivel.
  *
  * @author Ricardo Guntzell
  */

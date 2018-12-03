@@ -1,11 +1,12 @@
 package br.com.helpdesk.model;
 
 import br.com.helpdesk.model.usuario.Usuario;
-import br.com.helpdesk.model.pessoa.IPessoa;
+import br.com.helpdesk.model.pessoa.PessoaFisica;
+import br.com.helpdesk.model.pessoa.PessoaJuridica;
 
 /**
- * Funcionario [MODEL] Classe responsável por realizar o constrole, gerenciamento e
- * regra de negócios dos dados de Funcionario.
+ * Funcionario [MODEL] Classe responsável por realizar o constrole,
+ * gerenciamento e regra de negócios dos dados de Funcionario.
  *
  * @author Ricardo Guntzell
  */
@@ -15,14 +16,26 @@ public class Funcionario {
     private Usuario usuario;
     private Cargo cargo;
     private String ativo;
-    private IPessoa pessoa;
+    private PessoaFisica pf;
+    private PessoaJuridica pj;
 
-    public Funcionario(int codigo, Usuario usuario, Cargo cargo, String ativo, IPessoa pessoa) {
+    public Funcionario(int codigo, Usuario usuario, Cargo cargo, String ativo, PessoaFisica pf, PessoaJuridica pj) {
         this.codigo = codigo;
         this.usuario = usuario;
         this.cargo = cargo;
         this.ativo = ativo;
-        this.pessoa = pessoa;
+        this.pf = pf;
+        this.pj = pj;
+    }
+
+    public Funcionario(Usuario usuario, Cargo cargo, PessoaFisica pf, PessoaJuridica pj) {
+        this.usuario = usuario;
+        this.cargo = cargo;
+        this.pf = pf;
+        this.pj = pj;
+    }
+
+    public Funcionario() {
     }
 
     public int getCodigo() {
@@ -33,21 +46,44 @@ public class Funcionario {
         this.codigo = codigo;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
+
+    public String getAtivo() {
+        return ativo;
+    }
+
     public void setAtivo(String ativo) {
         this.ativo = ativo;
     }
 
-    public IPessoa getPessoa() {
-        return pessoa;
+    public PessoaFisica getPf() {
+        return pf;
     }
 
-    public void setPessoa(IPessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setPf(PessoaFisica pf) {
+        this.pf = pf;
     }
 
-    @Override
-    public String toString() {
-        return "Funcionario{" + "codigo=" + codigo + ", usuario=" + usuario + ", cargo=" + cargo + ", ativo=" + ativo + ", pessoa=" + pessoa + '}';
+    public PessoaJuridica getPj() {
+        return pj;
+    }
+
+    public void setPj(PessoaJuridica pj) {
+        this.pj = pj;
     }
 
 }

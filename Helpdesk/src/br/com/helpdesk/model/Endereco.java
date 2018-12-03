@@ -26,6 +26,18 @@ public class Endereco {
         this.complemento = complemento;
     }
 
+    public Endereco(String uf, String cidade, String logradouro, String cep, String numero, String complemento) {
+        this.uf = uf;
+        this.cidade = cidade;
+        this.logradouro = logradouro;
+        this.cep = cep;
+        this.numero = numero;
+        this.complemento = complemento;
+    }
+
+    public Endereco() {
+    }
+
     public int getId() {
         return id;
     }
