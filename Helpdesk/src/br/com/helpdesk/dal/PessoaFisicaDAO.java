@@ -26,7 +26,7 @@ public class PessoaFisicaDAO extends Conexao {
      * @param pf (Object).
      * @return Boolean.
      */
-    private Boolean verificaPessoaFisica(PessoaFisica pf) throws SQLException {
+    public Boolean verificaPessoaFisica(PessoaFisica pf) throws SQLException {
 
         //Inicializa a instrução preparada.
         PreparedStatement pst = null;
@@ -61,6 +61,7 @@ public class PessoaFisicaDAO extends Conexao {
             //1º condição, verifica na inclusão.
             //2º condição, verifica na alteração.            
             if (linhasRetornadas > 0) {
+                pf.setResposta("Já existe uma pessoa física cadastrada.");
                 JOptionPane.showMessageDialog(null, "Já existe uma pessoa física cadastrada.");
                 return true;
             } else if (linhasRetornadas > 0 && pf.getCpf().equals(cpf)) {

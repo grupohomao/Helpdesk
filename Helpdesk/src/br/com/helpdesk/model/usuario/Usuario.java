@@ -34,6 +34,7 @@ public class Usuario {
         this.usuarioDescricao = usuarioDescricao;
         this.usuarioSenha = usuarioSenha;
     }
+    
 
     public Usuario(int id, String usuarioDescricao) {
         this.id = id;
@@ -60,7 +61,7 @@ public class Usuario {
         this.usuarioDescricao = usuarioDescricao;
         this.usuarioSenha = usuarioSenha;
     }
-
+    
     public int getId() {
         return id;
     }
@@ -131,4 +132,8 @@ public class Usuario {
         return status;
     }
 
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", nivel=" + nivel + ", usuarioDescricao=" + usuarioDescricao + ", usuarioSenha=" + usuarioSenha + ", usuarioAtivo=" + usuarioAtivo + ", resposta=" + resposta + '}';
+    }
 }

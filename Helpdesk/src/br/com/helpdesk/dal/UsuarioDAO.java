@@ -2,6 +2,8 @@ package br.com.helpdesk.dal;
 
 import br.com.helpdesk.model.Cliente;
 import br.com.helpdesk.model.Funcionario;
+import br.com.helpdesk.model.pessoa.PessoaFisica;
+import br.com.helpdesk.model.usuario.Nivel;
 import br.com.helpdesk.model.usuario.Usuario;
 import br.com.helpdesk.session.Sessao;
 import java.sql.PreparedStatement;
@@ -184,9 +186,12 @@ public class UsuarioDAO extends Conexao {
             this.getConexao().setAutoCommit(false);
 
             //Query.
-            String sql = "SELECT * FROM Usuarios ";
+            String sql = "SELECT usu.id_usuario, usu.id_nivel, usu.usuario_descricao, usu.usuario_senha, ";
+            sql += "niv.nivel_descricao, niv.nivel_forca ";
+            sql += "FROM Usuarios usu INNER JOIN Niveis niv ";
+            sql += "ON usu.id_nivel = niv.id_nivel ";
             sql += "WHERE 1=1 ";
-            sql += "AND usuario_ativo = ?";
+            sql += "AND usu.usuario_ativo = ?";
 
             //Prepara a instrução SQL
             pst = this.getConexao().prepareStatement(sql);
@@ -198,10 +203,14 @@ public class UsuarioDAO extends Conexao {
             //Armazena o objeto de retorno da consulta.
             ResultSet rs = pst.executeQuery();
 
+            Nivel niv;
+
             while (rs.next()) {
                 usu = new Usuario(
                         rs.getInt("id_usuario"),
-                        rs.getString("usuario_descricao")
+                        niv = new Nivel(rs.getInt("id_nivel"), rs.getString("nivel_descricao"), rs.getInt("nivel_forca")),
+                        rs.getString("usuario_descricao"),
+                        rs.getString("usuario_senha")
                 );
 
                 usuLista.add(usu);
@@ -314,9 +323,26 @@ public class UsuarioDAO extends Conexao {
         //Inicializa o status.
         boolean status = this.verificaUsuarioExiste(usu);
 
+        //Inicializa o statusPessoa.
+//        boolean statusPessoa = false;
+//        String erroResposta = null;
+//
+//        if (cli.getPf() instanceof PessoaFisica) {
+//            statusPessoa = new PessoaFisicaDAO(cli.getPf()).verificaPessoaFisica(cli.getPf());
+//            erroResposta = cli.getPf().getResposta();
+//        } else {
+//            statusPessoa = new PessoaJuridicaDAO(cli.getPj()).verificaPessoaJuridica(cli.getPj());
+//        }
+
+//        if (statusPessoa) {
+//            JOptionPane.showMessageDialog(null, erroResposta);
+//            return false;
+//        }
+
         if (status) {
             return false;
         }
+
         try {
             //Inicia a transação.
             this.getConexao().setAutoCommit(false);
@@ -351,6 +377,7 @@ public class UsuarioDAO extends Conexao {
 
                 ClienteDAO cliDAO = new ClienteDAO(cli);
                 Usuario usuCli = new Usuario(idUsuario);
+
                 cliDAO.inclui(cli, usuCli);
 
             } else {

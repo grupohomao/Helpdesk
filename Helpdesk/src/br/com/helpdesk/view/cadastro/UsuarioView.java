@@ -99,6 +99,8 @@ public class UsuarioView extends javax.swing.JFrame {
         jftxtPessoa.setText("");
         jtxtRamo.setText("");
         jftxtIE.setText("");
+
+        jbtnSalvar.setText("Salvar");//Reset no texto.
     }
 
     /**
@@ -152,16 +154,17 @@ public class UsuarioView extends javax.swing.JFrame {
         //Zera o índice do Objeto.
         dtb.setRowCount(0);
 
-        //Percorre o array e preenche o jTable com cada atributo do (object) Nivel.
+        //Percorre o array e preenche o jTable com cada atributo do (object) Usuário.
         for (int indice = 0; indice < usuMT.size(); indice++) {
             Usuario usu = usuMT.get(indice);
-            dtb.addRow(new Object[]{usu.getId(), usu.getUsuarioDescricao()});
+            dtb.addRow(new Object[]{usu.getId(), usu.getUsuarioDescricao(), usu.getNivel().getDescricao()});
         }
     }
 
     /**
      * <b>getUsuarioLinhaTabela</b>
-     * Método responsável por recuperar os valores da linha seleciona do jTable.
+     * Método responsável por recuperar os valores da linha selecionada do
+     * jTable.
      *
      * @param linha (int) índice da linha a ser selecionada.
      * @return (object) Usuario.
@@ -187,6 +190,10 @@ public class UsuarioView extends javax.swing.JFrame {
                     break;
                 case 1:
                     usu.setUsuarioDescricao((String) dtm.getValueAt(linha, i));
+                    break;
+                case 2:
+                    Nivel niv = new Nivel(String.valueOf(dtm.getValueAt(linha, i)));
+                    usu.setNivel(niv);
                     break;
             }
         }
@@ -264,28 +271,6 @@ public class UsuarioView extends javax.swing.JFrame {
         jftxtPessoa.setFormatterFactory(this.dff);
     }
 
-//    private boolean verificaPreenchimento() {
-//        boolean status = false;
-//        String acao = null;
-//
-//        if (jtxtId.getText().equals("")) {
-//            acao = "incluir";
-//        } else {
-//            acao = "alterar";
-//        }
-//
-//        switch (acao) {
-//            case "incluir":
-//                     if(jcboTip tipoPessoa != 0 && tipoUsuario != 0)           
-//                break;
-//
-//            case "altear":
-//                break;
-//
-//        }
-//
-//        return status;
-//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -438,11 +423,11 @@ public class UsuarioView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Login"
+                "Código", "Login", "Nível"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -646,7 +631,6 @@ public class UsuarioView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCancelarActionPerformed
-        // TODO add your handling code here:
         this.limpaCampos();
         this.desabilitaCampos(false);
     }//GEN-LAST:event_jbtnCancelarActionPerformed
@@ -672,6 +656,7 @@ public class UsuarioView extends javax.swing.JFrame {
             }
 
             switch (acaoForm) {
+
                 case "incluir":
                     //Bloco para recuperar o nível do usuário via formulário.
                     Nivel niv = new Nivel();
@@ -694,195 +679,115 @@ public class UsuarioView extends javax.swing.JFrame {
                         PessoaFisica pf;//Inicializa o objeto PessoaFisica.
                         PessoaJuridica pj;//Inicializa o objeto PessoaJuridica.
 
-                        //Verifica se é pessoa física ou jurídica.
-                        if (jrbtCpf.isSelected() || jrbtCnpj.isSelected()) {
-                            Cliente cli;//Inicializa o objeto Cliente.                            
-                            Funcionario fun;//Inicializa o objeto Funcionario.                            
+                        //Solicita o preenchimento nível e tipo de usuário.
+                        if (jcboNivel.getSelectedIndex() < 1 || jcboTipoUsuario.getSelectedIndex() < 1) {
+                            //Verifica se é pessoa física ou jurídica.
+                            if (jrbtCpf.isSelected() || jrbtCnpj.isSelected()) {
+                                Cliente cli;//Inicializa o objeto Cliente.                            
+                                Funcionario fun;//Inicializa o objeto Funcionario.                            
 
-                            //Se for Pessoa Física...
-                            if (jrbtCpf.isSelected()) {
-                                mail = new Email(jtxtEmail.getText(), "default");
-                                tel = new Telefone("default", jftxtTelefone.getText(), "default");
-                                end = new Endereco();
-                                pf = new PessoaFisica(jftxtPessoa.getText(), jtxtRamo.getText(), jtxtNome.getText(), mail, tel, end);
-                                pj = null;
+                                //Se for Pessoa Física...
+                                if (jrbtCpf.isSelected()) {
+                                    mail = new Email(jtxtEmail.getText(), "default");
+                                    tel = new Telefone("default", jftxtTelefone.getText(), "default");
+                                    end = new Endereco();
+                                    pf = new PessoaFisica(jftxtPessoa.getText(), jtxtRamo.getText(), jtxtNome.getText(), mail, tel, end);
+                                    pj = null;
 
-                                //Valida os dados de uma pessoa física.
-                                if (pf.validadPessoaFisica()) {
-                                    if (jcboTipoUsuario.getSelectedItem() == "Cliente") {
-                                        cli = new Cliente(usu, pf, pj);//Instância Cliente.
-                                        delUsu = new DelegaUsuario();//Instância DelegaUsuario.
+                                    //Valida os dados de uma pessoa física.
+                                    if (pf.validadPessoaFisica()) {
+                                        if (jcboTipoUsuario.getSelectedItem() == "Cliente") {
+                                            cli = new Cliente(usu, pf, pj);//Instância Cliente.
+                                            delUsu = new DelegaUsuario();//Instância DelegaUsuario.
 
-                                        //Chama o controlador para efetuar a ação de inclusão.
-                                        delUsu.acoes(acaoForm, usu, cli, null);
+                                            //Chama o controlador para efetuar a ação de inclusão.
+                                            delUsu.acoes(acaoForm, usu, cli, null);
 
-                                        this.atualizaLista();
-                                        this.limpaCampos();
-                                    } else if (jcboTipoUsuario.getSelectedItem() == "Funcionário") {
-                                        Cargo car = new Cargo();//Instância Cargo.
-                                        fun = new Funcionario(usu, car, pf, pj);//Instância Funcionario.
-                                        delUsu = new DelegaUsuario();//Instância do controlador.
+                                            this.atualizaLista();
+                                            this.limpaCampos();
+                                        } else if (jcboTipoUsuario.getSelectedItem() == "Funcionário") {
+                                            Cargo car = new Cargo();//Instância Cargo.
+                                            fun = new Funcionario(usu, car, pf, pj);//Instância Funcionario.
+                                            delUsu = new DelegaUsuario();//Instância do controlador.
 
-                                        //Chama o controlador para efetuar a ação de inclusão.
-                                        delUsu.acoes(acaoForm, usu, null, fun);
+                                            //Chama o controlador para efetuar a ação de inclusão.
+                                            delUsu.acoes(acaoForm, usu, null, fun);
 
-                                        this.atualizaLista();
-                                        this.limpaCampos();
+                                            this.atualizaLista();
+                                            this.limpaCampos();
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, pf.getResposta());
                                     }
-                                } else {
-                                    JOptionPane.showMessageDialog(null, pf.getResposta());
-                                }
 
-                                //Se for Pessoa Jurídica...
+                                    //Se for Pessoa Jurídica...
+                                } else {
+                                    mail = new Email(jtxtEmail.getText(), "default");
+                                    tel = new Telefone("default", jftxtTelefone.getText(), "default");
+                                    end = new Endereco();
+                                    pj = new PessoaJuridica(jftxtPessoa.getText(), jftxtIE.getText(), jtxtRamo.getText(), jtxtNome.getText(), mail, tel, end);
+                                    pf = null;
+
+                                    //Valida os dados de uma pessoa jurídica.
+                                    if (pj.validadPessoaJuridica()) {
+                                        if (jcboTipoUsuario.getSelectedItem() == "Cliente") {
+                                            cli = new Cliente(usu, pf, pj);//Instância Cliente.
+                                            delUsu = new DelegaUsuario();
+
+                                            //Chama o controlador para efetuar a ação de inclusão.
+                                            delUsu.acoes(acaoForm, usu, cli, null);
+
+                                            this.atualizaLista();
+                                            this.limpaCampos();
+                                        } else if (jcboTipoUsuario.getSelectedItem() == "Funcionário") {
+                                            Cargo car = new Cargo();//Instância Cargo.
+                                            fun = new Funcionario(usu, car, pf, pj);//Instância Funcionario.
+                                            delUsu = new DelegaUsuario();//Instância do controlador.
+
+                                            //Chama o controlador para efetuar a ação de inclusão.
+                                            delUsu.acoes(acaoForm, usu, null, fun);
+                                            this.atualizaLista();
+                                            this.limpaCampos();
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, pj.getResposta());
+                                    }
+                                }
                             } else {
-                                mail = new Email(jtxtEmail.getText(), "default");
-                                tel = new Telefone("default", jftxtTelefone.getText(), "default");
-                                end = new Endereco();
-                                pj = new PessoaJuridica(jftxtPessoa.getText(), jftxtIE.getText(), jtxtRamo.getText(), jtxtNome.getText(), mail, tel, end);
-                                pf = null;
-
-                                //Valida os dados de uma pessoa jurídica.
-                                if (pj.validadPessoaJuridica()) {
-                                    if (jcboTipoUsuario.getSelectedItem() == "Cliente") {
-                                        cli = new Cliente(usu, pf, pj);//Instância Cliente.
-                                        delUsu = new DelegaUsuario();
-
-                                        //Chama o controlador para efetuar a ação de inclusão.
-                                        delUsu.acoes(acaoForm, usu, cli, null);
-
-                                        this.atualizaLista();
-                                        this.limpaCampos();
-                                    } else if (jcboTipoUsuario.getSelectedItem() == "Funcionário") {
-                                        Cargo car = new Cargo();//Instância Cargo.
-                                        fun = new Funcionario(usu, car, pf, pj);//Instância Funcionario.
-                                        delUsu = new DelegaUsuario();//Instância do controlador.
-
-                                        //Chama o controlador para efetuar a ação de inclusão.
-                                        delUsu.acoes(acaoForm, usu, null, fun);
-                                        this.atualizaLista();
-                                        this.limpaCampos();
-                                    }
-                                } else {
-                                    JOptionPane.showMessageDialog(null, pj.getResposta());
-                                }
+                                JOptionPane.showMessageDialog(null, "Informe se é pessoa física ou pessoa jurídica!");
                             }
                         } else {
-                            JOptionPane.showMessageDialog(null, "Informe se é pessoa física ou pessoa jurídica!");
+                            JOptionPane.showMessageDialog(null, "Informe nível e o tipo de usuário!");
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, usu.getResposta());
                     }
                     break;
 
-                case "altear":
+                case "alterar":
+
+                    //Bloco para recuperar o nível do usuário via formulário.
+                    Nivel nivAlt = new Nivel();
+
+                    ArrayList<Nivel> nivListaAlt = this.recuperaNiveis();
+                    nivAlt = nivListaAlt.get(jcboNivel.getSelectedIndex());
+
+                    //Objeto Nivel.
+                    Nivel nivUsuAlt = new Nivel(nivAlt.getId(), nivAlt.getDescricao(), nivAlt.getForca());
+
+                    //Objeto Usuario.
+                    Usuario usuAlt = new Usuario(Integer.parseInt(jtxtId.getText()), nivUsuAlt, jtxtLogin.getText(), jpwfSenha.getText());
+
+                    DelegaUsuario delUsuAlt = new DelegaUsuario();
+
+                    //Chama o controlador para efetuar a ação de alteração.
+                    delUsuAlt.acoes(acaoForm, usuAlt, null, null);
+
+                    this.atualizaLista();
+                    this.limpaCampos();
+
                     break;
-
             }
-
-//            int tipoUsuario = 0;
-//            int tipoPessoa = 0;
-//
-//            if (jcboTipoUsuario.getSelectedItem() == "Cliente") {
-//                tipoUsuario = 1;
-//            } else if (jcboTipoUsuario.getSelectedItem() == "Funcionário") {
-//                tipoUsuario = 2;
-//            }
-//
-//            if (jrbtCpf.isSelected()) {
-//                tipoPessoa = 1;
-//            } else if (jrbtCnpj.isSelected()) {
-//                tipoPessoa = 2;
-//            }
-//
-//            if (jtxtId.getText().equals("")) {
-//
-//                String nome = jtxtNome.getText();
-//                String email = jtxtEmail.getText();
-//                String telefone = jftxtTelefone.getText();
-//
-//                Nivel niv = new Nivel();
-//                ArrayList<Nivel> nivLista = this.recuperaNiveis();
-//                niv = nivLista.get(jcboNivel.getSelectedIndex());
-//
-//                //Usuário.
-//                String id = jtxtId.getText();
-//                String login = jtxtLogin.getText();
-//                String senha = jpwfSenha.getText();
-//                int nivel = niv.getId();
-//
-//                String acao = "incluir";
-//
-//                Nivel nivUsu = new Nivel(niv.getId());
-//                Usuario usu = new Usuario(nivUsu, login, senha);
-//
-//                Email mail = new Email(email, "default");
-//                Telefone tel = new Telefone("default", telefone, "default");
-//                Endereco end = new Endereco();
-//
-//                String identPes = jftxtPessoa.getText();
-//                String ramo = jtxtRamo.getText();
-//
-//                //Finalização do Usuário.                        
-//                DelegaUsuario delUsu = new DelegaUsuario();
-//                PessoaFisica pf;
-//                PessoaJuridica pj;
-//
-//                boolean statusPessoaFJ = false;
-//
-//                if (tipoPessoa == 1) {
-//                    pf = new PessoaFisica(identPes, ramo, nome, mail, tel, end);
-//
-////                            if (pf.validaCPF()) {
-////                                JOptionPane.showMessageDialog(null, "Certo!");
-////                            } else {
-////                                JOptionPane.showMessageDialog(null, "Errado!");
-////                            }
-//                    pj = null;
-//                } else {
-//                    pf = null;
-//
-//                    String ie = jftxtIE.getText();
-//                    pj = new PessoaJuridica(identPes, ie, ramo, nome, mail, tel, end);
-//                }
-//
-////                        if (tipoUsuario == 1) {
-////                            Cliente cli = new Cliente(usu, pf, pj);
-////                            delUsu.acoes(acao, usu, cli, null);
-////                        } else {
-////                            Cargo car = new Cargo();
-////                            Funcionario fun = new Funcionario(usu, car, pf, pj);
-////                            delUsu.acoes(acao, usu, null, fun);
-////                        }
-//                this.atualizaLista();
-//                this.limpaCampos();
-//                //JOptionPane.showMessageDialog(null, login + "\n" + senha + "\n" + niv.getId());
-//
-//            } else {
-////                    String acao = "alterar";
-////
-////                    if (login.isEmpty() || senha.equals("") || nivel < 1) {
-////                        JOptionPane.showMessageDialog(null, "Opss... Você deve preencher todos os campos!");
-////                    } else {
-////
-////                        DelegaUsuario delUsu = new DelegaUsuario();
-////                        Nivel nivUsu = new Nivel(niv.getId());
-////                        Usuario usu = new Usuario(Integer.parseInt(id), nivUsu, login, senha);
-////
-////                        try {
-////                            delUsu.acoes(acao, usu, null, null);
-////                        } catch (SQLException ex) {
-////                            Logger.getLogger(UsuarioView.class.getName()).log(Level.SEVERE, null, ex);
-////                        }
-////
-////                        try {
-////                            this.atualizaLista();
-////                        } catch (SQLException ex) {
-////                            Logger.getLogger(UsuarioView.class.getName()).log(Level.SEVERE, null, ex);
-////                        }
-////                        this.desabilitaCampos(false);
-////                        this.limpaCampos();
-////                    }
-//            }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -895,7 +800,7 @@ public class UsuarioView extends javax.swing.JFrame {
      *
      */
     private void jtbListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbListaMouseClicked
-        // TODO add your handling code here:
+        jbtnSalvar.setText("Atualizar");
         int linhaSelecionada = jtbLista.getSelectedRow();
 
         if (linhaSelecionada >= 0) {
@@ -904,6 +809,7 @@ public class UsuarioView extends javax.swing.JFrame {
             if (usu != null) {
                 jtxtId.setText(String.valueOf(usu.getId()));
                 jtxtLogin.setText(usu.getUsuarioDescricao());
+                jcboNivel.setSelectedItem(usu.getNivel().getDescricao());
             }
         }
 

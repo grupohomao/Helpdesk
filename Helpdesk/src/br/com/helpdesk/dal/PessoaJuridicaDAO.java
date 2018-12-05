@@ -26,7 +26,7 @@ public class PessoaJuridicaDAO extends Conexao {
      * @param pj (Object).
      * @return Boolean.
      */
-    private Boolean verificaPessoaFisica(PessoaJuridica pj) throws SQLException {
+    public Boolean verificaPessoaJuridica(PessoaJuridica pj) throws SQLException {
 
         //Inicializa a instrução preparada.
         PreparedStatement pst = null;
@@ -103,7 +103,7 @@ public class PessoaJuridicaDAO extends Conexao {
         PreparedStatement pst = null;
 
         //Inicializa o status.
-        boolean status = this.verificaPessoaFisica(pj);
+        boolean status = this.verificaPessoaJuridica(pj);
 
         //Inicializa o retorno do id da pessoa.
         int idPessoa = 0;

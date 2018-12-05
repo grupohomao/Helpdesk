@@ -32,6 +32,10 @@ public class Nivel {
         this.id = id;
     }
 
+    public Nivel(String descricao) {
+        this.descricao = descricao;
+    }
+    
     public Nivel() {
     }
 
