@@ -1,6 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.com.helpdesk.dal;
 
-import br.com.helpdesk.model.Cliente;
+import br.com.helpdesk.model.Funcionario;
 import br.com.helpdesk.model.pessoa.PessoaFisica;
 import br.com.helpdesk.model.pessoa.PessoaJuridica;
 import br.com.helpdesk.model.usuario.Usuario;
@@ -14,22 +19,22 @@ import javax.swing.JOptionPane;
  *
  * @author Ricardo Guntzell
  */
-public class ClienteDAO extends Conexao {
+public class FuncionarioDAO extends Conexao {
 
-    public ClienteDAO(Cliente cli) {
+    public FuncionarioDAO(Funcionario cli) {
 
     }
 
     /**
      * <b>inclui</b>
-     * Método responsável por incluir os dados na tabela de níveis.
+     * Método responsável por incluir os dados na tabela de funcionário.
      *
-     * @param cli (object) Cliente.
+     * @param fun (object) Funcionario.
      * @param usu (object) Usuario.
      * @throws java.sql.SQLException
      * @return Boolean
      */
-    public Boolean inclui(Cliente cli, Usuario usu) throws SQLException {
+    public Boolean inclui(Funcionario fun, Usuario usu) throws SQLException {
         //Inicializa a instrução preparada.
         PreparedStatement pst = null;
 
@@ -40,16 +45,16 @@ public class ClienteDAO extends Conexao {
         int idPessoa = 0;
 
         //Bloco para identificar o tipo de pessoa e por fim, efetuar o registro.
-        if (cli.getPf() instanceof PessoaFisica) {
+        if (fun.getPf() instanceof PessoaFisica) {
             pessoaFJ = "F";
-            PessoaFisica pf = new PessoaFisica(cli.getPf().getCpf(), cli.getPf().getProfissao(), cli.getPf().getNome(), cli.getPf().getEmail(), cli.getPf().getTelefone(), cli.getPf().getEndereco());
+            PessoaFisica pf = new PessoaFisica(fun.getPf().getCpf(), fun.getPf().getProfissao(), fun.getPf().getNome(), fun.getPf().getEmail(), fun.getPf().getTelefone(), fun.getPf().getEndereco());
             PessoaFisicaDAO pfDAO = new PessoaFisicaDAO(pf);
 
             idPessoa = pfDAO.inclui(pf, usu);
         } else {
             pessoaFJ = "J";
 
-            PessoaJuridica pj = new PessoaJuridica(cli.getPj().getCnpj(), cli.getPj().getIe(), cli.getPj().getRamo(), cli.getPj().getNome(), cli.getPj().getEmail(), cli.getPj().getTelefone(), cli.getPj().getEndereco());
+            PessoaJuridica pj = new PessoaJuridica(fun.getPj().getCnpj(), fun.getPj().getIe(), fun.getPj().getRamo(), fun.getPj().getNome(), fun.getPj().getEmail(), fun.getPj().getTelefone(), fun.getPj().getEndereco());
             PessoaJuridicaDAO pjDAO = new PessoaJuridicaDAO(pj);
 
             idPessoa = pjDAO.inclui(pj, usu);
@@ -62,15 +67,16 @@ public class ClienteDAO extends Conexao {
 
                 //Query.
                 String sql = "";
-                sql += "INSERT INTO Clientes ";
-                sql += "(id_pessoa) ";
-                sql += "VALUES (?)";
+                sql += "INSERT INTO Funcionarios ";
+                sql += "(id_pessoa, id_cargo) ";
+                sql += "VALUES (?, ?)";
 
                 //Prepara a instrução SQL
                 pst = this.getConexao().prepareStatement(sql);
 
                 //Informa o tipo de dado e o dado a ser registrado no BD.
                 pst.setInt(1, idPessoa);
+                pst.setInt(2, 1);
 
                 //Recupera o número de linhas afetadas.
                 int retorno = pst.executeUpdate();
@@ -78,7 +84,7 @@ public class ClienteDAO extends Conexao {
                 //Registra os dados no BD.
                 if (retorno > 0) {
                     this.getConexao().commit();
-                    //JOptionPane.showMessageDialog(null, "Cliente adicionado com sucesso!");
+                    //JOptionPane.showMessageDialog(null, "Funcionário adicionado com sucesso!");
                 } else {
                     JOptionPane.showMessageDialog(null, "Ocorreu uma falha na inclusão, contate o suporte!");
                 }

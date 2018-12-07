@@ -83,7 +83,7 @@ public class Sessao {
     public void solicitaMenu(Usuario usu) {
         if (this.statusLogin) {
             this.defineUsuarioSessao(usu);
-
+                        
             this.login.setVisible(false);
             this.menu.setVisible(true);
         }

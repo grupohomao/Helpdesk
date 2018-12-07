@@ -145,7 +145,7 @@ public class PessoaJuridicaDAO extends Conexao {
                 //Registra os dados no BD.
                 if (retorno > 0) {
                     this.getConexao().commit();
-                    JOptionPane.showMessageDialog(null, "Pessoa adicionada com sucesso!");
+                    //JOptionPane.showMessageDialog(null, "Pessoa adicionada com sucesso!");
                 } else {
                     JOptionPane.showMessageDialog(null, "Ocorreu uma falha na inclusão da pessoa jurídica, contate o suporte!");
                 }

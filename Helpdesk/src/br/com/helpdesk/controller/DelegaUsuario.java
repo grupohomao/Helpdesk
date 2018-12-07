@@ -45,6 +45,10 @@ public class DelegaUsuario {
             case "alterar":
                 usuDAO.altera(usu);
                 break;
+
+            case "excluirLogico":
+                usuDAO.removeLogico(usu);
+                break;
         }
         return null;
     }

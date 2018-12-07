@@ -36,7 +36,6 @@ public class UsuarioDAO extends Conexao {
 
         //Inicializa a instrução preparada.
         PreparedStatement pst = null;
-        int idRecuperado = 0;
 
         try {
             //Inicia a transação.
@@ -63,13 +62,12 @@ public class UsuarioDAO extends Conexao {
             int linhasRetornadas = 0;
 
             while (rs.next()) {
-                idRecuperado = rs.getInt("id_usuario");
                 linhasRetornadas++;
             }
 
             //1º condição, verifica na inclusão.
             if (linhasRetornadas > 0 && usu.getId() <= 0) {
-                JOptionPane.showMessageDialog(null, "Bem vindo... " + idRecuperado + "!");
+                JOptionPane.showMessageDialog(null, "Bem vindo... " + usu.getUsuarioDescricao() + "!");
                 return usu;
             } else {
                 JOptionPane.showMessageDialog(null, "Opss... Não foi encontrado nenhum usuário com esses dados!");
@@ -256,6 +254,7 @@ public class UsuarioDAO extends Conexao {
             sql += "FROM Usuarios ";
             sql += "WHERE 1 = 1 ";
             sql += "AND usuario_descricao = ? ";
+            sql += "AND usuario_ativo = 'S' ";
 
             //Prepara a instrução SQL
             pst = this.getConexao().prepareStatement(sql);
@@ -324,21 +323,30 @@ public class UsuarioDAO extends Conexao {
         boolean status = this.verificaUsuarioExiste(usu);
 
         //Inicializa o statusPessoa.
-//        boolean statusPessoa = false;
-//        String erroResposta = null;
-//
-//        if (cli.getPf() instanceof PessoaFisica) {
-//            statusPessoa = new PessoaFisicaDAO(cli.getPf()).verificaPessoaFisica(cli.getPf());
-//            erroResposta = cli.getPf().getResposta();
-//        } else {
-//            statusPessoa = new PessoaJuridicaDAO(cli.getPj()).verificaPessoaJuridica(cli.getPj());
-//        }
+        boolean statusPessoa = false;
 
-//        if (statusPessoa) {
-//            JOptionPane.showMessageDialog(null, erroResposta);
-//            return false;
-//        }
+        //Se for cliente.
+        if (cli != null) {
+            //Se for PF.
+            if (cli.getPf() instanceof PessoaFisica) {
+                statusPessoa = new PessoaFisicaDAO(null).verificaPessoaFisica(cli.getPf());
+            } else {
+                statusPessoa = new PessoaJuridicaDAO(null).verificaPessoaJuridica(cli.getPj());
+            }
+            //Se for Funcionário            
+        } else {
+            //Se for PF.
+            if (fun.getPf() instanceof PessoaFisica) {
+                statusPessoa = new PessoaFisicaDAO(null).verificaPessoaFisica(fun.getPf());
+            } else {
+                statusPessoa = new PessoaJuridicaDAO(null).verificaPessoaJuridica(fun.getPj());
+            }
+        }
 
+        if (statusPessoa) {
+            JOptionPane.showMessageDialog(null, "CPF ou CNPJ já existentes!");
+            return false;
+        }
         if (status) {
             return false;
         }
@@ -375,10 +383,18 @@ public class UsuarioDAO extends Conexao {
                 this.getConexao().commit();
                 JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso!");
 
-                ClienteDAO cliDAO = new ClienteDAO(cli);
-                Usuario usuCli = new Usuario(idUsuario);
+                //Se for cliente.
+                if (cli instanceof Cliente) {
+                    ClienteDAO cliDAO = new ClienteDAO(cli);
+                    Usuario usuCli = new Usuario(idUsuario);
 
-                cliDAO.inclui(cli, usuCli);
+                    cliDAO.inclui(cli, usuCli);
+                } else {
+                    FuncionarioDAO funDAO = new FuncionarioDAO(fun);
+                    Usuario usuFun = new Usuario(idUsuario);
+
+                    funDAO.inclui(fun, usuFun);
+                }
 
             } else {
                 JOptionPane.showMessageDialog(null, "Ocorreu uma falha na inclusão, contate o suporte!");
@@ -467,4 +483,60 @@ public class UsuarioDAO extends Conexao {
         }
         return true;
     }
+
+    /**
+     * <b>removeLogico</b>
+     * Método responsável por efetuar a exclusão lógica do usuário.
+     *
+     * @param usu (Object).
+     * @return Boolean.
+     * @throws java.sql.SQLException
+     */
+    public Boolean removeLogico(Usuario usu) throws SQLException {
+
+        //Inicializa a instrução preparada.
+        PreparedStatement pst = null;
+
+        try {
+            //Inicia a transação.
+            this.getConexao().setAutoCommit(false);
+
+            //Query.
+            String sql = "";
+            sql += "UPDATE Usuarios SET usuario_ativo = 'N' ";
+            sql += "WHERE id_usuario = ?";
+
+            //Prepara a instrução SQL
+            pst = this.getConexao().prepareStatement(sql);
+
+            //Informa o tipo de dado e o dado a ser registrado no BD.
+            pst.setInt(1, usu.getId());
+
+            //Recupera o número de linhas afetadas.
+            int retorno = pst.executeUpdate();
+
+            //Registra os dados no BD.
+            if (retorno > 0) {
+                this.getConexao().commit();
+                JOptionPane.showMessageDialog(null, "Usuário inativado com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Opss, ocorreu uma falha na atualização, contate o suporte!");
+            }
+        } catch (SQLException ex) {
+            //Caso aconteça uma exceção, é efetuado o roolback.
+            if (this.getConexao() != null) {
+                JOptionPane.showMessageDialog(null, "#Rollback efetuado na transação. \n" + ex);
+                this.getConexao().rollback();
+            }
+        } finally {
+            //Fecha a conexão.
+            if (pst != null) {
+                pst.close();
+            }
+            //Finaliza as transações.
+            this.getConexao().setAutoCommit(true);
+        }
+        return true;
+    }
+
 }

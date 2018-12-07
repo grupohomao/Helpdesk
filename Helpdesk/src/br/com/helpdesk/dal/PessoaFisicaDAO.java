@@ -61,7 +61,6 @@ public class PessoaFisicaDAO extends Conexao {
             //1º condição, verifica na inclusão.
             //2º condição, verifica na alteração.            
             if (linhasRetornadas > 0) {
-                pf.setResposta("Já existe uma pessoa física cadastrada.");
                 JOptionPane.showMessageDialog(null, "Já existe uma pessoa física cadastrada.");
                 return true;
             } else if (linhasRetornadas > 0 && pf.getCpf().equals(cpf)) {
@@ -145,7 +144,7 @@ public class PessoaFisicaDAO extends Conexao {
                 //Registra os dados no BD.
                 if (retorno > 0) {
                     this.getConexao().commit();
-                    JOptionPane.showMessageDialog(null, "Pessoa adicionada com sucesso!");
+                    //JOptionPane.showMessageDialog(null, "Pessoa adicionada com sucesso!");
                 } else {
                     JOptionPane.showMessageDialog(null, "Ocorreu uma falha na inclusão da pessoa física, contate o suporte!");
                 }

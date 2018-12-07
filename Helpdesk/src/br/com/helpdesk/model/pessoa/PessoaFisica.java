@@ -17,7 +17,7 @@ public class PessoaFisica extends Pessoa {
     protected String profissao;
 
     /*Atributo auxiliar*/
-    private String resposta;
+    public static String resposta;
 
     public PessoaFisica(String cpf, String profissao, String nome, Email email, Telefone telefone, Endereco endereco) {
         super(nome, email, telefone, endereco);
@@ -135,6 +135,11 @@ public class PessoaFisica extends Pessoa {
     @Override
     public String definePessoa() {
         return "pessoa_fisica";
+    }
+
+    @Override
+    public String toString() {
+        return "PessoaFisica{" + "cpf=" + cpf + ", profissao=" + profissao + '}';
     }
 
 }

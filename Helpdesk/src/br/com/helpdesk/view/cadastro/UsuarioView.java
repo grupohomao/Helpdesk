@@ -680,7 +680,7 @@ public class UsuarioView extends javax.swing.JFrame {
                         PessoaJuridica pj;//Inicializa o objeto PessoaJuridica.
 
                         //Solicita o preenchimento nível e tipo de usuário.
-                        if (jcboNivel.getSelectedIndex() < 1 || jcboTipoUsuario.getSelectedIndex() < 1) {
+                        if (jcboNivel.getSelectedIndex() > 0 || jcboTipoUsuario.getSelectedIndex() > 0) {
                             //Verifica se é pessoa física ou jurídica.
                             if (jrbtCpf.isSelected() || jrbtCnpj.isSelected()) {
                                 Cliente cli;//Inicializa o objeto Cliente.                            
@@ -847,10 +847,25 @@ public class UsuarioView extends javax.swing.JFrame {
 
     private void jbtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExcluirActionPerformed
 
-        String pessoaFJ = jftxtPessoa.getText().replace(".", "").replace("-", "");
+        if (!jtxtId.getText().isEmpty()) {
+            Usuario usu = new Usuario(Integer.parseInt(jtxtId.getText()));
 
-        JOptionPane.showMessageDialog(null, pessoaFJ);
-
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente remover esse usuário?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                String acao = "excluirLogico";
+                DelegaUsuario delUsu = new DelegaUsuario();
+                try {
+                    delUsu.acoes(acao, usu, null, null);
+                    this.atualizaLista();
+                    this.limpaCampos();
+                    this.desabilitaCampos(false);
+                } catch (SQLException ex) {
+                    Logger.getLogger(UsuarioView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um usuário primeiro!");
+        }
     }//GEN-LAST:event_jbtnExcluirActionPerformed
 
     private void jftxtPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jftxtPessoaActionPerformed

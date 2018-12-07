@@ -74,6 +74,10 @@ public class Cliente {
     public void setPj(PessoaJuridica pj) {
         this.pj = pj;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "id=" + id + ", usuario=" + usuario + ", ativo=" + ativo + ", pf=" + pf + ", pj=" + pj + '}';
+    }
         
 }

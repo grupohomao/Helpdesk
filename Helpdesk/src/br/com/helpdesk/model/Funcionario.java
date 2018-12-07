@@ -86,4 +86,9 @@ public class Funcionario {
         this.pj = pj;
     }
 
+    @Override
+    public String toString() {
+        return "Funcionario{" + "codigo=" + codigo + ", usuario=" + usuario + ", cargo=" + cargo + ", ativo=" + ativo + ", pf=" + pf + ", pj=" + pj + '}';
+    }
+    
 }
