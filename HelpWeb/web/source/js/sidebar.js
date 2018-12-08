@@ -5,7 +5,7 @@ $(function () {
         $('#sidebar').toggleClass('active');
     });
     
-    var action = "http://localhost:8084/HelpWeb/index.html";
+    var action = "http://localhost:8084/HelpWeb/index.jsp";
     
     //Intermediário para invocar a rotina que efetua o logout.
     $("#logout").on('click', function () {

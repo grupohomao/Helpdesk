@@ -105,8 +105,7 @@ CREATE TABLE Ocorrencias (
     id_ocorrencia INT UNSIGNED NOT NULL AUTO_INCREMENT,
     ocorrencia_descricao VARCHAR(20) NOT NULL,
     ocorrencia_ativo ENUM('S', 'N') DEFAULT 'S',
-    ocorrencia_data_inclusao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
-    ocorrencia_data_atualizacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
+    ocorrencia_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
     PRIMARY KEY (id_ocorrencia),
     UNIQUE (ocorrencia_descricao)
 );
@@ -116,20 +115,17 @@ CREATE TABLE Cargos (
     id_cargo INT UNSIGNED NOT NULL AUTO_INCREMENT,
     cargo_descricao VARCHAR(100) NOT NULL,
     cargo_ativo ENUM('S', 'N') DEFAULT 'S',
-    cargo_data_inclusao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
-    cargo_data_atualizacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
+    cargo_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
     PRIMARY KEY (id_cargo),
     UNIQUE (cargo_descricao)
 );
-
 
 /** Chamados */
 CREATE TABLE Equipamentos (
     id_equipamento INT UNSIGNED NOT NULL AUTO_INCREMENT,
     equipamento_descricao VARCHAR(255) NOT NULL,
     equipamento_ativo ENUM('S', 'N') DEFAULT 'S',
-    equipamento_data_inclusao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
-    equipamento_data_atualizacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
+    equipamento_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
     PRIMARY KEY (id_equipamento),
     UNIQUE (equipamento_descricao)
 );
@@ -139,10 +135,11 @@ CREATE TABLE Chamados (
     id_chamado INT UNSIGNED NOT NULL AUTO_INCREMENT,
     id_ocorrencia INT UNSIGNED NOT NULL,
     id_equipamento INT UNSIGNED NOT NULL,
+    id_cliente INT UNSIGNED NOT NULL,
+    id_funcionario INT UNSIGNED NOT NULL,
     chamado_situacao ENUM('S', 'N') DEFAULT 'N',
     chamado_descricao LONGTEXT NOT NULL,
-    chamado_data_inclusao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
-    chamado_data_atualizacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
+    chamado_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
     PRIMARY KEY (id_chamado)
 );
 
@@ -160,8 +157,7 @@ CREATE TABLE Base_Conhecimento (
     base_conhecimento_causa LONGTEXT NOT NULL,
     base_conhecimento_efeito LONGTEXT NOT NULL,
     base_conhecimento_solucao LONGTEXT NOT NULL,
-    base_conhecimento_data_inclusao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
-    base_conhecimento_data_atualizacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
+    base_conhecimento_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
     PRIMARY KEY (id_base_conhecimento)
 );
 

@@ -24,7 +24,7 @@
         <!-- JS -->
         <script type="text/javascript">
             $(function () {
-                var action = "http://localhost:8084/HelpWeb/index.html";
+                var action = "http://localhost:8084/HelpWeb/index.jsp";
 
                 //Intermediário para invocar a rotina que efetua o logout.
                 Dialog({
@@ -32,6 +32,10 @@
                     message: 'Você não tem permissão!',
                     response: "danger"
                 });
+
+                setTimeout(function () {
+                    window.location.href = action;
+                }, 3500);
             });
         </script>
     </head>

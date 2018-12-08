@@ -1,3 +1,16 @@
+<%-- 
+    Document   : index
+    Created on : 08/12/2018, 17:13:58
+    Author     : Ricardo Guntzell
+--%>
+<%@page import="br.com.helpdesk.session.Sessao"%>
+<%
+    if(Sessao.getSessao().getStatusLogin()){
+        Sessao.getSessao().setStatusLogin(false);
+    }    
+    System.out.println(Sessao.getSessao().getStatusLogin());
+%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>

@@ -1,28 +1,33 @@
 <%-- 
-    Document   : dashboard
+    Document   : chamado
     Created on : 07/12/2018, 21:24:29
     Author     : Ricardo Guntzell
 --%>
 
+<%@page import="br.com.helpdesk.model.usuario.RelatorioChamado"%>
+<%@page import="br.com.helpdesk.controller.DelegaRelatorioChamado"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="br.com.helpdesk.session.Sessao"%>
 <%@page import="br.com.helpdesk.controller.DelegaUsuario"%>
 <%@page import="br.com.helpdesk.model.usuario.Usuario"%>
 <%
     Usuario usu = null;
     String usuDesc = null;
+    String acao = "listar";
+    ArrayList<RelatorioChamado> listaChamados = null;
+    DelegaRelatorioChamado delRelCha = null;
 
     //!request.getParameter("usuario").isEmpty() && !request.getParameter("senha").isEmpty()
     if (!Sessao.getSessao().getStatusLogin()) {
         usu = new Usuario(request.getParameter("usuario"), request.getParameter("senha"));
         usuDesc = usu.getUsuarioDescricao();
-        
+
         DelegaUsuario delUsu = new DelegaUsuario();
         delUsu.acoes("logar", usu);
-    }else{
+
+        System.out.println(Sessao.getSessao().getUsuarioSessao().toString());
+    } else {
         usuDesc = Sessao.getSessao().getUsuarioSessao().getUsuarioDescricao();
-    }
-    
-    if (Sessao.getSessao().getStatusLogin()) {
         System.out.println(Sessao.getSessao().getUsuarioSessao().toString());
     }
 
@@ -35,7 +40,8 @@
     String[] arrPage = pathAtual.split("/");
     String paginaAtual = arrPage[arrPage.length - 1];
 
-
+    delRelCha = new DelegaRelatorioChamado();
+    listaChamados = delRelCha.acoes(acao);
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -61,7 +67,11 @@
         <script type="text/javascript" src="../source/framework/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../source/framework/bootstrap/js/bootstrap-dialog.js"></script>
         <!-- JS -->
+         <!-- DataTables JS -->
+         <script type="text/javascript" src="../source/framework/datatables/datatables.min.js"></script>
+
         <script type="text/javascript" src="../source/js/sidebar.js"></script>
+        <script type="text/javascript" src="../source/js/scriptChamado.js"></script>
 
     </head>
 
@@ -72,25 +82,25 @@
                 <!-- Sidebar Holder -->
                 <nav id="sidebar">
                     <div class="sidebar-header">
-                        <a href="<%= path %>dashboard.jsp" title="logo"><img class="img-fluid" src="../source/img/login-logo.png"></a>
+                        <a href="<%= path%>dashboard.jsp" title="logo"><img class="img-fluid" src="../source/img/login-logo.png"></a>
                     </div>
 
                     <ul class="list-unstyled components">
                         <li class="active">
-                            <a href="<%= path %>dashboard.jsp" title="Dashboard"><i class="fa fa-pull-right fa-home fa-lg"></i>Painel</a>
+                            <a href="<%= path%>dashboard.jsp" title="Dashboard"><i class="fa fa-pull-right fa-home fa-lg"></i>Painel</a>
                         </li>
                         <li>
                             <a href="#homeSubmenu" title="Cadastros" data-toggle="collapse"><i class="fa fa-pull-right fa-edit fa-lg"></i>Cadastros</a>
                             <% if (Sessao.getSessao().getUsuarioSessao().getNivel().getForca() > 5) {%>
                             <ul class="collapse list-unstyled" id="homeSubmenu">
-                                <li><a href="<%= path %>equipamento.jsp" title="">Equipamentos</a></li>
+                                <li><a href="<%= path%>equipamento.jsp" title="">Equipamentos</a></li>
                             </ul>
                             <% }%>
                         </li>
                         <li>
                             <a href="#pageSubmenu" title="Chamados" data-toggle="collapse"><i class="fa fa-pull-right fa-file-archive fa-lg"></i>Chamados</a>
                             <ul class="collapse list-unstyled" id="pageSubmenu">
-                                <li><a href="<%= path %>chamado.jsp" title="">Relatório</a></li>
+                                <li><a href="<%= path%>chamado.jsp" title="">Relatório</a></li>
                             </ul>
                         </li>
                         <li>
@@ -111,11 +121,46 @@
                             <div class="navbar-header">
                                 <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                                     <i class="fas fa-bars"></i>
-                                    Bem vindo, <%= usuDesc %>!
+                                    Bem vindo, <%= usuDesc%>!
                                 </button>
                             </div>
                         </div>
                     </nav>
+                    <main>
+                        <div id="main" class="container-fluid">
+
+                            <h3>Chamados</h3>
+
+                            <div id="list" class="row">
+                                <div class="table-responsive">
+                                    <table id="chamado" class="table table-dark table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">Código do chamado</th>
+                                                <th class="text-center">Cliente</th>
+                                                <th class="text-center">Responsável</th>
+                                                <th class="text-center">Situação</th>
+                                                <th class="text-center">Ocorrido</th>
+                                                <th class="text-center">Última atualização</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for (RelatorioChamado chamado : listaChamados) {%>
+                                            <tr>
+                                                <td class="text-center"><%= chamado.getId()%></td>
+                                                <td class="text-center"><%= chamado.getChamadoCliente()%></td>
+                                                <td class="text-center"><%= chamado.getChamadoFuncionario()%></td>
+                                                <td class="text-center"><%= chamado.getChamadoSituacao()%></td>
+                                                <td class="text-center"><%= chamado.getChamadoDescricao()%></td>
+                                                <td class="text-center"><%= chamado.getChamadoData()%></td>
+                                            </tr>
+                                            <%}%>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> <!-- /#list -->
+                        </div> <!-- /#main -->
+                    </main>
                 </div>
             </div>
         </header>      
