@@ -2,24 +2,44 @@
 * São os comandos de consulta.
 */
 
-/* Exemplo de Seleção para Users-Leves-Persons*/
-SELECT 
-    us.user_login,
-    us.user_password,
-    lev.level_name,
-    lev.level_power
-FROM
-    users us
-        INNER JOIN
-    levels lev ON us.id_level = lev.id_level;
+use helpdesk;
+ 
+select * from usuarios; 
+select * from clientes; 
+select * from pessoas;
 
-/* Exemplo de Seleção para Users */
+select * from funcionarios; 
+
+select * from chamados; 
+
+select * from niveis; 
+select * from cargos; 
+
 SELECT 
-    id_user, id_level, user_login, user_password, user_active
+    cli.id_cliente, pes.id_pessoa, pes.pessoa_nome
 FROM
-    Users
-WHERE
-    user_login = 'webmaster'
-        AND user_password = 'webmaster'
-        AND user_active = 'S';
+    Pessoas pes
+        INNER JOIN
+    Clientes cli ON pes.id_pessoa = cli.id_pessoa;
     
+SELECT 
+    fun.id_funcionario, fun.id_cargo, pes.id_pessoa, pes.pessoa_nome
+FROM
+    Pessoas pes
+        INNER JOIN
+    Funcionarios fun ON pes.id_pessoa = fun.id_pessoa;
+
+
+SELECT 
+    cha.id_chamado,
+    pes.pessoa_nome AS cliente,
+    cha.id_funcionario,
+    cha.chamado_descricao,
+    cha.chamado_situacao,
+    cha.chamado_data
+FROM
+    Pessoas pes
+        INNER JOIN
+    Clientes cli ON pes.id_pessoa = cli.id_pessoa
+        INNER JOIN
+    Chamados cha ON cli.id_cliente = cha.id_cliente;

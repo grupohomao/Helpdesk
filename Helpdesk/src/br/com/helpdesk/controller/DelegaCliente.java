@@ -35,8 +35,11 @@ public class DelegaCliente {
 
         switch (acao) {
 
-            case "incluir":
-                //cliDAO.inclui(Cliente cli, Pessoa);
+            case "listar":
+                return cliDAO.lista();
+
+            case "alterar":
+                cliDAO.altera(cli);
                 break;
 
         }

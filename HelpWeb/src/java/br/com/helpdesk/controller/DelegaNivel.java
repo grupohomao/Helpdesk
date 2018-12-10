@@ -1,7 +1,7 @@
 package br.com.helpdesk.controller;
 
 import br.com.helpdesk.dal.NivelDAO;
-import br.com.helpdesk.model.usuario.Nivel;
+import br.com.helpdesk.model.Nivel;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

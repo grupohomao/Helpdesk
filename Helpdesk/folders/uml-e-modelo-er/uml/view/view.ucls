@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="br.com.helpdesk.view.cadastro.ChamadoView" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/cadastro/ChamadoView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="855" width="277" x="165" y="-424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="br.com.helpdesk.view.Menu" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/Menu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="269" x="482" y="-424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="3" language="java" name="br.com.helpdesk.view.cadastro" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/cadastro" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="201" x="791" y="-424"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="4" language="java" name="br.com.helpdesk.view.Login" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/Login.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="236" x="1032" y="-424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="br.com.helpdesk.view.cadastro.ClienteView" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/cadastro/ClienteView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="477" width="256" x="1308" y="-424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="br.com.helpdesk.view.cadastro.FuncionarioView" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/cadastro/FuncionarioView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="567" width="256" x="1604" y="-424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="br.com.helpdesk.view.cadastro.UsuarioView" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/cadastro/UsuarioView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1197" width="273" x="1900" y="-424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="8" language="java" name="br.com.helpdesk.view" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="147" x="2213" y="-424"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="9" language="java" name="br.com.helpdesk.view.cadastro.NivelView" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/cadastro/NivelView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="513" width="256" x="2400" y="-424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

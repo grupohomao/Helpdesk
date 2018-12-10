@@ -4,9 +4,10 @@
     Author     : Ricardo Guntzell
 --%>
 
+<%@page import="br.com.helpdesk.model.Usuario"%>
 <%@page import="br.com.helpdesk.session.Sessao"%>
 <%@page import="br.com.helpdesk.controller.DelegaUsuario"%>
-<%@page import="br.com.helpdesk.model.usuario.Usuario"%>
+
 <%
     Usuario usu = null;
     String usuDesc = null;
@@ -45,7 +46,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="">
+        <link rel="icon" href="../source/img/helpdesk-ico.ico">
 
         <title>Painel - Menu</title>
 
@@ -72,7 +73,7 @@
                 <!-- Sidebar Holder -->
                 <nav id="sidebar">
                     <div class="sidebar-header">
-                        <a href="<%= path %>dashboard.jsp" title="logo"><img class="img-fluid" src="../source/img/login-logo.png"></a>
+                        <a href="<%= path %>dashboard.jsp" title="logo"><img class="img-fluid" src="../source/img/login-logo.jpg"></a>
                     </div>
 
                     <ul class="list-unstyled components">
@@ -83,7 +84,7 @@
                             <a href="#homeSubmenu" title="Cadastros" data-toggle="collapse"><i class="fa fa-pull-right fa-edit fa-lg"></i>Cadastros</a>
                             <% if (Sessao.getSessao().getUsuarioSessao().getNivel().getForca() > 5) {%>
                             <ul class="collapse list-unstyled" id="homeSubmenu">
-                                <li><a href="<%= path %>equipamento.jsp" title="">Equipamentos</a></li>
+                                <li><a href="#" title="">Equipamentos</a></li>
                             </ul>
                             <% }%>
                         </li>

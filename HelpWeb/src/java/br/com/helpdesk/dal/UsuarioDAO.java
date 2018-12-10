@@ -1,7 +1,7 @@
 package br.com.helpdesk.dal;
 
-import br.com.helpdesk.model.usuario.Nivel;
-import br.com.helpdesk.model.usuario.Usuario;
+import br.com.helpdesk.model.Nivel;
+import br.com.helpdesk.model.Usuario;
 import br.com.helpdesk.session.Sessao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

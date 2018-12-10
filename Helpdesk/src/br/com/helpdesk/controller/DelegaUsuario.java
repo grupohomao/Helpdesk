@@ -27,12 +27,12 @@ public class DelegaUsuario {
      */
     public ArrayList<Usuario> acoes(String acao, Usuario usu, Cliente cli, Funcionario fun) throws SQLException {
         UsuarioDAO usuDAO = new UsuarioDAO(usu);
-
+        Usuario usuSes = null;
         switch (acao) {
 
             case "logar":
-                usuDAO.listaUsuarioSessao(usu);
-                Sessao.getSessao().solicitaMenu(usu);
+                usuSes = usuDAO.listaUsuarioSessao(usu);
+                Sessao.getSessao().solicitaMenu(usuSes);
                 return null;
 
             case "listarTodos":

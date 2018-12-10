@@ -36,6 +36,7 @@ public class UsuarioDAO extends Conexao {
 
         //Inicializa a instrução preparada.
         PreparedStatement pst = null;
+        Usuario usuRet = null;
 
         try {
             //Inicia a transação.
@@ -63,12 +64,13 @@ public class UsuarioDAO extends Conexao {
 
             while (rs.next()) {
                 linhasRetornadas++;
+                usuRet = new Usuario(rs.getInt("id_usuario"));
             }
 
             //1º condição, verifica na inclusão.
             if (linhasRetornadas > 0 && usu.getId() <= 0) {
+                Sessao.getSessao().setStatusLogin(true);
                 JOptionPane.showMessageDialog(null, "Bem vindo... " + usu.getUsuarioDescricao() + "!");
-                return usu;
             } else {
                 JOptionPane.showMessageDialog(null, "Opss... Não foi encontrado nenhum usuário com esses dados!");
             }
@@ -88,7 +90,7 @@ public class UsuarioDAO extends Conexao {
             this.getConexao().setAutoCommit(true);
         }
 
-        return null;
+        return usuRet;
     }
 
     /**
@@ -100,65 +102,62 @@ public class UsuarioDAO extends Conexao {
      * @throws java.sql.SQLException
      * @return ArrayList
      */
-    public ArrayList<Usuario> listaUsuarioSessao(Usuario usuParam) throws SQLException {
+    public Usuario listaUsuarioSessao(Usuario usuParam) throws SQLException {
 
-        if (this.login(usuParam) != null) {
-            Sessao.getSessao().setStatusLogin(true);
+        Usuario usu = this.login(usuParam);
+
+        if (Sessao.getSessao().getStatusLogin()) {
+
+            //Inicializa a instrução preparada.
+            PreparedStatement pst = null;
+
+            try {
+                //Inicia a transação.
+                this.getConexao().setAutoCommit(false);
+
+                //Query.
+                String sql = "SELECT usu.id_usuario, usu.id_nivel, usu.usuario_descricao, usu.usuario_senha, ";
+                sql += "niv.nivel_descricao, niv.nivel_forca ";
+                sql += "FROM Usuarios usu INNER JOIN Niveis niv ";
+                sql += "ON usu.id_nivel = niv.id_nivel ";
+                sql += "WHERE 1=1 ";
+                sql += "AND id_usuario = ?";
+
+                //Prepara a instrução SQL
+                pst = this.getConexao().prepareStatement(sql);
+
+                //Informa o tipo de dado a ser interpretado.
+                pst.setInt(1, usu.getId());
+
+                //Armazena o objeto de retorno da consulta.
+                ResultSet rs = pst.executeQuery();
+                Nivel niv;
+
+                while (rs.next()) {
+                    usu = new Usuario(
+                            rs.getInt("id_usuario"),
+                            niv = new Nivel(rs.getInt("id_nivel"), rs.getString("nivel_descricao"), rs.getInt("nivel_forca")),
+                            rs.getString("usuario_descricao"),
+                            rs.getString("usuario_senha")
+                    );
+                }
+
+            } catch (SQLException ex) {
+                //Caso aconteça uma exceção, é efetuado o roolback.
+                if (this.getConexao() != null) {
+                    JOptionPane.showMessageDialog(null, "#Rollback efetuado na transação. \n" + ex);
+                    this.getConexao().rollback();
+                }
+            } finally {
+                //Fecha a conexão.
+                if (pst != null) {
+                    pst.close();
+                }
+                //Finaliza as transações.
+                this.getConexao().setAutoCommit(true);
+            }
         }
-
-        //Inicializa a instrução preparada.
-        PreparedStatement pst = null;
-
-        //Inicializa o array para armazenar as tuplas que retornarão do BD.
-        ArrayList<Usuario> usuLista = new ArrayList<>();
-
-        //Obejeto Nivel que será adiocionado ao array.
-        Usuario usu;
-
-        try {
-            //Inicia a transação.
-            this.getConexao().setAutoCommit(false);
-
-            //Query.
-            String sql = "SELECT id_usuario, ";
-            sql += "usuario_descricao FROM Usuarios ";
-            sql += "WHERE 1 = 1 ";
-            sql += "AND id_usuario = ?";
-
-            //Prepara a instrução SQL
-            pst = this.getConexao().prepareStatement(sql);
-
-            //Informa o tipo de dado a ser interpretado.
-            pst.setInt(1, usuParam.getId());
-
-            //Armazena o objeto de retorno da consulta.
-            ResultSet rs = pst.executeQuery();
-
-            while (rs.next()) {
-                usu = new Usuario(
-                        rs.getInt("id_usuario"),
-                        rs.getString("usuario_descricao")
-                );
-
-                usuLista.add(usu);
-            }
-
-        } catch (SQLException ex) {
-            //Caso aconteça uma exceção, é efetuado o roolback.
-            if (this.getConexao() != null) {
-                JOptionPane.showMessageDialog(null, "#Rollback efetuado na transação. \n" + ex);
-                this.getConexao().rollback();
-            }
-        } finally {
-            //Fecha a conexão.
-            if (pst != null) {
-                pst.close();
-            }
-            //Finaliza as transações.
-            this.getConexao().setAutoCommit(true);
-        }
-
-        return usuLista;
+        return usu;
     }
 
     /**

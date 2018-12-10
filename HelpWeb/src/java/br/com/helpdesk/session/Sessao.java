@@ -1,6 +1,6 @@
 package br.com.helpdesk.session;
 
-import br.com.helpdesk.model.usuario.Usuario;
+import br.com.helpdesk.model.Usuario;
 
 
 /**

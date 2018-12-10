@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="br.com.helpdesk.dal.PessoaFisicaDAO" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/dal/PessoaFisicaDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="240" x="4348" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="br.com.helpdesk.model.pessoa.PessoaFisica" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/pessoa/PessoaFisica.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="308" x="6052" y="1423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="br.com.helpdesk.dal.FuncionarioDAO" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/dal/FuncionarioDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="209" x="4628" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="br.com.helpdesk.dal.PessoaJuridicaDAO" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/dal/PessoaJuridicaDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="258" x="4877" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="5" language="java" name="br.com.helpdesk.model.pessoa" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/pessoa" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="201" x="214" y="-349"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="6" language="java" name="br.com.helpdesk.model.pessoa.Pessoa" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/pessoa/Pessoa.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="218" x="3842" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="br.com.helpdesk.dal.OcorrenciaDAO" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/dal/OcorrenciaDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="167" x="5175" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="br.com.helpdesk.session.Sessao" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/session/Sessao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="198" x="4100" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="br.com.helpdesk.dal.NivelDAO" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/dal/NivelDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="158" x="5382" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="br.com.helpdesk.model.Ocorrencia" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/Ocorrencia.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="203" x="7416" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="11" language="java" name="br.com.helpdesk.main" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/main" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="149" x="455" y="-349"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="12" language="java" name="br.com.helpdesk.controller.DelegaChamado" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/controller/DelegaChamado.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="245" x="644" y="-349"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="br.com.helpdesk.controller.DelegaCliente" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/controller/DelegaCliente.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="362" x="929" y="-349"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="br.com.helpdesk.model.Cliente" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/Cliente.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="441" width="291" x="6698" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="br.com.helpdesk.view.cadastro.ChamadoView" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/cadastro/ChamadoView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="855" width="277" x="1331" y="-349"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="16" language="java" name="br.com.helpdesk.view.cadastro" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/cadastro" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="201" x="1648" y="-349"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="17" language="java" name="br.com.helpdesk.controller.DelegaNivel" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/controller/DelegaNivel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="201" x="1889" y="-349"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="br.com.helpdesk.dal.EquipamentoDAO" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/dal/EquipamentoDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="174" x="5580" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="br.com.helpdesk.model.Equipamento" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/Equipamento.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="210" x="7659" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="br.com.helpdesk.model.Telefone" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/Telefone.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="179" x="3434" y="1423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="br.com.helpdesk.view.cadastro.UsuarioView" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/cadastro/UsuarioView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1197" width="273" x="2130" y="-349"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="br.com.helpdesk.model.usuario.Nivel" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/usuario/Nivel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="149" x="6788" y="2012"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="br.com.helpdesk.model.Funcionario" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/Funcionario.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="495" width="347" x="7029" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="br.com.helpdesk.model.pessoa.PessoaJuridica" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/pessoa/PessoaJuridica.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="369" width="348" x="6400" y="1423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="br.com.helpdesk.dal.CargoDAO" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/dal/CargoDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="171" x="5794" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="br.com.helpdesk.view.Menu" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/Menu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="269" x="4159" y="1423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="27" language="java" name="br.com.helpdesk.view.img" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/img" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="171" x="2443" y="-349"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="28" language="java" name="br.com.helpdesk.controller" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="176" x="2654" y="-349"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="29" language="java" name="br.com.helpdesk.dal.Conexao" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/dal/Conexao.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="149" x="5580" y="-349"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="br.com.helpdesk.view.Login" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/Login.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="236" x="4468" y="1423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="br.com.helpdesk.view.cadastro.ClienteView" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/cadastro/ClienteView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="477" width="256" x="2870" y="-349"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="br.com.helpdesk.controller.DelegaUsuario" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/controller/DelegaUsuario.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="323" x="3166" y="-349"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="br.com.helpdesk.dal.UsuarioDAO" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/dal/UsuarioDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="230" x="6005" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="34" language="java" name="br.com.helpdesk.model" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="156" x="3529" y="-349"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="35" language="java" name="br.com.helpdesk.model.Chamado" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/Chamado.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="801" width="367" x="7200" y="-349"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="br.com.helpdesk.dal.ChamadoDAO" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/dal/ChamadoDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="158" x="6275" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="br.com.helpdesk.controller.DelegaFuncionario" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/controller/DelegaFuncionario.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="410" x="3725" y="-349"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="br.com.helpdesk.view.cadastro.NivelView" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/cadastro/NivelView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="513" width="256" x="4175" y="-349"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="39" language="java" name="br.com.helpdesk.session" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/session" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="166" x="4471" y="-349"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="40" language="java" name="br.com.helpdesk.model.Cargo" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/Cargo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="149" x="7029" y="1423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="br.com.helpdesk.model.usuario.Usuario" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/usuario/Usuario.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="549" width="201" x="6788" y="1423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="br.com.helpdesk.model.Email" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/Email.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="279" width="149" x="3653" y="1423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="br.com.helpdesk.model.Endereco" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/Endereco.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="495" width="277" x="3842" y="1423"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="44" language="java" name="br.com.helpdesk.model.usuario" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/model/usuario" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="202" x="4677" y="-349"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="45" language="java" name="br.com.helpdesk.dal.ClienteDAO" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/dal/ClienteDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="185" x="6473" y="888"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="br.com.helpdesk.view.cadastro.FuncionarioView" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view/cadastro/FuncionarioView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="567" width="256" x="4919" y="-349"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="47" language="java" name="br.com.helpdesk.dal" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/dal" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="138" x="5215" y="-349"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="48" language="java" name="br.com.helpdesk.view" project="Helpdesk" 
+    file="/Helpdesk/src/br/com/helpdesk/view" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="50" width="147" x="5393" y="-349"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <association id="49">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="50" name="instancia"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="52">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="53" name="usuario"/>      
+      <multiplicity id="54" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="55">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="56" name="Funcionario"/>      
+      <multiplicity id="57" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="58">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <association id="59">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="60" name="usuarioSessao"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="62">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="63" name="email"/>      
+      <multiplicity id="64" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="65">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="66" name="cargo"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="40" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="68">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="69" name="pj"/>      
+      <multiplicity id="70" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="71">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <generalization id="72">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="73">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <association id="74">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="75" name="login"/>      
+      <multiplicity id="76" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="77">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="78" name="nivel"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="81" name="Equipamento"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="83">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="84">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <generalization id="85">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <association id="86">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="87" name="telefone"/>      
+      <multiplicity id="88" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="89">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="90" name="pf"/>      
+      <multiplicity id="91" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="92">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <association id="93">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="94" name="Ocorrencia"/>      
+      <multiplicity id="95" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="96">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="97" name="pf"/>      
+      <multiplicity id="98" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="99">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="100" name="endereco"/>      
+      <multiplicity id="101" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="102">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <association id="103">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="104" name="Cliente"/>      
+      <multiplicity id="105" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="106">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="107" name="menu"/>      
+      <multiplicity id="108" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="109">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <generalization id="110">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <generalization id="111">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <association id="112">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="113" name="pj"/>      
+      <multiplicity id="114" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="115">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="116" name="usuario"/>      
+      <multiplicity id="117" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

@@ -1,6 +1,6 @@
 package br.com.helpdesk.dal;
 
-import br.com.helpdesk.model.usuario.RelatorioChamado;
+import br.com.helpdesk.model.RelatorioChamado;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

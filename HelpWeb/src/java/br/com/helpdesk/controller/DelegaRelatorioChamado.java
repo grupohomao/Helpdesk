@@ -1,6 +1,6 @@
 package br.com.helpdesk.controller;
 
-import br.com.helpdesk.model.usuario.RelatorioChamado;
+import br.com.helpdesk.model.RelatorioChamado;
 import br.com.helpdesk.dal.*;
 
 import java.sql.SQLException;

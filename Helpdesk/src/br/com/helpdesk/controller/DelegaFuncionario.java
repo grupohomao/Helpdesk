@@ -9,6 +9,7 @@ import br.com.helpdesk.model.pessoa.PessoaFisica;
 import br.com.helpdesk.model.pessoa.PessoaJuridica;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  * DelegaFuncionario [CONTROLLER] Classe responsável por realizar o constrole
@@ -36,8 +37,11 @@ public class DelegaFuncionario {
 
         switch (acao) {
 
-            case "incluir":
-                //funDAO.inclui(Funcionario fun, Pessoa);
+            case "listar":
+                return funDAO.lista();
+
+            case "alterar":
+                funDAO.altera(fun);
                 break;
 
         }

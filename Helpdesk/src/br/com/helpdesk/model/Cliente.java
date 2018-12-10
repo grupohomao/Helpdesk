@@ -13,6 +13,7 @@ import br.com.helpdesk.model.pessoa.PessoaJuridica;
 public class Cliente {
 
     private int id;
+    private String nome;
     private Usuario usuario;
     private String ativo;
     private PessoaFisica pf;
@@ -31,10 +32,19 @@ public class Cliente {
         this.pf = pf;
         this.pj = pj;
     }
+
+    public Cliente(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
+    public Cliente(String nome) {
+        this.nome = nome;
+    }
     
     public Cliente() {
     }
-
+    
     public int getId() {
         return id;
     }
@@ -75,6 +85,14 @@ public class Cliente {
         this.pj = pj;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
     @Override
     public String toString() {
         return "Cliente{" + "id=" + id + ", usuario=" + usuario + ", ativo=" + ativo + ", pf=" + pf + ", pj=" + pj + '}';

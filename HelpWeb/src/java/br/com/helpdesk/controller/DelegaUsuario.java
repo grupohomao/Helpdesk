@@ -1,7 +1,7 @@
 package br.com.helpdesk.controller;
 
 import br.com.helpdesk.dal.UsuarioDAO;
-import br.com.helpdesk.model.usuario.Usuario;
+import br.com.helpdesk.model.Usuario;
 import java.sql.SQLException;
 
 /**

@@ -25,6 +25,15 @@ public class Cargo {
     public Cargo() {
     }
 
+    public Cargo(int codigo) {
+        this.codigo = codigo;
+    }
+    
+    public Cargo(int codigo, String descricao) {
+        this.codigo = codigo;
+        this.descricao = descricao;
+    }
+    
     public int getCodigo() {
         return codigo;
     }

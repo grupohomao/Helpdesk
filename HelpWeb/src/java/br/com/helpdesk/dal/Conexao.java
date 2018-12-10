@@ -43,6 +43,7 @@ public abstract class Conexao {
             url += this.database;
 
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+
             this.conexao = DriverManager.getConnection(url, this.usuario, this.senha);
         } catch (SQLException ex) {
             System.out.println(ex);

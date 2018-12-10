@@ -3,6 +3,7 @@ package br.com.helpdesk.session;
 import br.com.helpdesk.model.usuario.Usuario;
 import br.com.helpdesk.view.Login;
 import br.com.helpdesk.view.Menu;
+import javax.swing.JOptionPane;
 
 /**
  * Sessao [SESSION] Classe responsável por realizar o constrole da sessão.
@@ -19,7 +20,7 @@ public class Sessao {
 
     /*Atributos de Telas*/
     private final Login login = new Login();
-    private final Menu menu = new Menu();
+    private Menu menu;
 
     /* Construtor privado (suprime o construtor público padrão).*/
     private Sessao() {
@@ -40,6 +41,10 @@ public class Sessao {
 
     public void setUsuarioSessao(Usuario usuarioSessao) {
         this.usuarioSessao = usuarioSessao;
+    }
+
+    public void setMenu(boolean permissao) {
+        this.menu = new Menu(permissao);
     }
 
     /**
@@ -83,8 +88,17 @@ public class Sessao {
     public void solicitaMenu(Usuario usu) {
         if (this.statusLogin) {
             this.defineUsuarioSessao(usu);
-                        
+
             this.login.setVisible(false);
+
+            if (this.getUsuarioSessao().getNivel().getForca() > 5) {
+                this.setMenu(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Você não tem permissão para acessar por essa plataforma, por favor, acesso o módulo web!");
+                System.exit(0);
+                this.setMenu(false);
+            }
+
             this.menu.setVisible(true);
         }
     }

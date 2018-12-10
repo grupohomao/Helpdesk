@@ -5,16 +5,15 @@
  */
 package br.com.helpdesk.view;
 
-import br.com.helpdesk.model.usuario.Usuario;
+import br.com.helpdesk.model.Chamado;
 import br.com.helpdesk.session.Sessao;
 import br.com.helpdesk.view.cadastro.*;
-import br.com.helpdesk.view.chamado.*;
-import br.com.helpdesk.view.relatorio.*;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,8 +24,17 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    public Menu() {
+    public Menu(boolean permissao) {
         initComponents();
+        
+        verificaPermissao(permissao);
+    }
+    
+    public void verificaPermissao(boolean permissao) {
+        jbtnUsuario.setVisible(permissao);
+        jbtnFuncionario.setVisible(permissao);
+        jbtnCliente.setVisible(permissao);
+        jbtnChamado.setVisible(permissao);
     }
 
     /**
@@ -38,60 +46,11 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonChamadosAbertos = new javax.swing.JButton();
-        jButtonRelatorios = new javax.swing.JButton();
-        jButtonCadastrarUsuario = new javax.swing.JButton();
-        jButtonSuporteAndamento = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButtonHistorico = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
-        jButton6 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        jbtnChamado = new javax.swing.JButton();
+        jbtnFuncionario = new javax.swing.JButton();
+        jbtnUsuario = new javax.swing.JButton();
+        jbtnCliente = new javax.swing.JButton();
         jMenuBarMenu = new javax.swing.JMenuBar();
-        jMenuCadastro = new javax.swing.JMenu();
-        jMenuEquipamentos = new javax.swing.JMenu();
-        jMenuItemEquipComputadores = new javax.swing.JMenuItem();
-        jMenuImpressoras = new javax.swing.JMenu();
-        jMenuItemNobreaks = new javax.swing.JMenuItem();
-        jMenuEntidades = new javax.swing.JMenu();
-        jMenuUsuarios = new javax.swing.JMenuItem();
-        jMenuItemContatos = new javax.swing.JMenuItem();
-        jMenuItemFornecedores = new javax.swing.JMenuItem();
-        jMenuGestao = new javax.swing.JMenu();
-        jMenuItemChamados = new javax.swing.JMenuItem();
-        jMenuItemMissoes = new javax.swing.JMenuItem();
-        jMenuManutencoes = new javax.swing.JMenu();
-        jMenuSolicitacoes = new javax.swing.JMenu();
-        jMenuItemSolicitacoesCompras = new javax.swing.JMenuItem();
-        jMenuItemSolicitacoesManutencao = new javax.swing.JMenuItem();
-        jMenuItemSolicitacoesEletrica = new javax.swing.JMenuItem();
-        jMenuGarantias = new javax.swing.JMenu();
-        jMenuItemComputadores = new javax.swing.JMenuItem();
-        jMenuInformacoes = new javax.swing.JMenu();
-        jMenu12 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenu13 = new javax.swing.JMenu();
-        jMenu15 = new javax.swing.JMenu();
-        jMenu18 = new javax.swing.JMenu();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenu19 = new javax.swing.JMenu();
-        jMenu16 = new javax.swing.JMenu();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenu17 = new javax.swing.JMenu();
-        jMenuItem16 = new javax.swing.JMenuItem();
-        jMenuItem17 = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
-        jMenu14 = new javax.swing.JMenu();
         jMenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,260 +59,56 @@ public class Menu extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(null);
 
-        jButtonChamadosAbertos.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButtonChamadosAbertos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/helpdesk/view/img/technical_wrench.png"))); // NOI18N
-        jButtonChamadosAbertos.setText("CHAMADOS ABERTOS");
-        jButtonChamadosAbertos.addActionListener(new java.awt.event.ActionListener() {
+        jbtnChamado.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jbtnChamado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/helpdesk/view/img/technical_wrench.png"))); // NOI18N
+        jbtnChamado.setText("CHAMADOS");
+        jbtnChamado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonChamadosAbertosActionPerformed(evt);
+                jbtnChamadoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonChamadosAbertos);
-        jButtonChamadosAbertos.setBounds(160, 10, 337, 150);
+        getContentPane().add(jbtnChamado);
+        jbtnChamado.setBounds(10, 20, 330, 150);
 
-        jButtonRelatorios.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButtonRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/helpdesk/view/img/copy2.png"))); // NOI18N
-        jButtonRelatorios.setText("        RELATÓRIOS       ");
-        jButtonRelatorios.addActionListener(new java.awt.event.ActionListener() {
+        jbtnFuncionario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jbtnFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/helpdesk/view/img/copy2.png"))); // NOI18N
+        jbtnFuncionario.setText("FUNCIONÁRIOS");
+        jbtnFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRelatoriosActionPerformed(evt);
+                jbtnFuncionarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonRelatorios);
-        jButtonRelatorios.setBounds(160, 180, 340, 160);
+        getContentPane().add(jbtnFuncionario);
+        jbtnFuncionario.setBounds(410, 20, 340, 160);
 
-        jButtonCadastrarUsuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButtonCadastrarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/helpdesk/view/img/group.png"))); // NOI18N
-        jButtonCadastrarUsuario.setText("CADASTRAR USUÁRIO");
-        jButtonCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
+        jbtnUsuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jbtnUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/helpdesk/view/img/group.png"))); // NOI18N
+        jbtnUsuario.setText("USUÁRIOS");
+        jbtnUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarUsuarioActionPerformed(evt);
+                jbtnUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonCadastrarUsuario);
-        jButtonCadastrarUsuario.setBounds(510, 10, 330, 150);
+        getContentPane().add(jbtnUsuario);
+        jbtnUsuario.setBounds(410, 200, 340, 160);
 
-        jButtonSuporteAndamento.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButtonSuporteAndamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/helpdesk/view/img/hourglass.png"))); // NOI18N
-        jButtonSuporteAndamento.setText("SUPORTE EM ANDAMENTO");
-        jButtonSuporteAndamento.addActionListener(new java.awt.event.ActionListener() {
+        jbtnCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jbtnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/helpdesk/view/img/copy2.png"))); // NOI18N
+        jbtnCliente.setText("CLIENTES");
+        jbtnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSuporteAndamentoActionPerformed(evt);
+                jbtnClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSuporteAndamento);
-        jButtonSuporteAndamento.setBounds(510, 180, 330, 160);
-
-        jButton5.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        jButton5.setText("COMPRAS");
-        jButton5.setMaximumSize(new java.awt.Dimension(70, 23));
-        jButton5.setMinimumSize(new java.awt.Dimension(70, 23));
-        getContentPane().add(jButton5);
-        jButton5.setBounds(10, 80, 140, 60);
-
-        jButtonHistorico.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        jButtonHistorico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/helpdesk/view/img/1.png"))); // NOI18N
-        jButtonHistorico.setText("HISTORICO");
-        getContentPane().add(jButtonHistorico);
-        jButtonHistorico.setBounds(10, 10, 140, 60);
-
-        jButton7.setText("jButton7");
-        getContentPane().add(jButton7);
-        jButton7.setBounds(10, 150, 140, 60);
-
-        jButton8.setText("jButton5");
-        getContentPane().add(jButton8);
-        jButton8.setBounds(10, 430, 140, 60);
-
-        jButton9.setText("jButton5");
-        getContentPane().add(jButton9);
-        jButton9.setBounds(10, 360, 140, 60);
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(160, 350, 340, 160);
-
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/helpdesk/view/img/windows.png"))); // NOI18N
-        jButton2.setText("BASE DE CONHECIMENTOS");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(860, 180, 340, 160);
-
-        jButton4.setText("jButton4");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(10, 290, 140, 60);
-
-        jButton10.setText("jButton10");
-        getContentPane().add(jButton10);
-        jButton10.setBounds(10, 220, 140, 60);
-        getContentPane().add(jCalendar1);
-        jCalendar1.setBounds(860, 10, 340, 160);
-
-        jButton6.setText("jButton6");
-        getContentPane().add(jButton6);
-        jButton6.setBounds(510, 350, 340, 160);
-
-        jButton13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/helpdesk/view/img/envelope_open.png"))); // NOI18N
-        jButton13.setText("               CHAT             ");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton13);
-        jButton13.setBounds(860, 350, 340, 160);
-
-        jMenuCadastro.setText("Cadastros");
-
-        jMenuEquipamentos.setText("Equipamentos");
-
-        jMenuItemEquipComputadores.setText("Computadores");
-        jMenuEquipamentos.add(jMenuItemEquipComputadores);
-
-        jMenuImpressoras.setText("Impressoras");
-        jMenuEquipamentos.add(jMenuImpressoras);
-
-        jMenuItemNobreaks.setText("NoBreaks");
-        jMenuEquipamentos.add(jMenuItemNobreaks);
-
-        jMenuCadastro.add(jMenuEquipamentos);
-
-        jMenuEntidades.setText("Entidades");
-
-        jMenuUsuarios.setText("Usuários");
-        jMenuUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuUsuariosActionPerformed(evt);
-            }
-        });
-        jMenuEntidades.add(jMenuUsuarios);
-
-        jMenuItemContatos.setText("Contatos");
-        jMenuEntidades.add(jMenuItemContatos);
-
-        jMenuItemFornecedores.setText("Fornecedores");
-        jMenuItemFornecedores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemFornecedoresActionPerformed(evt);
-            }
-        });
-        jMenuEntidades.add(jMenuItemFornecedores);
-
-        jMenuCadastro.add(jMenuEntidades);
-
-        jMenuBarMenu.add(jMenuCadastro);
-
-        jMenuGestao.setText("Gestão");
-
-        jMenuItemChamados.setText("Chamados");
-        jMenuItemChamados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemChamadosActionPerformed(evt);
-            }
-        });
-        jMenuGestao.add(jMenuItemChamados);
-
-        jMenuItemMissoes.setText("Missões");
-        jMenuGestao.add(jMenuItemMissoes);
-
-        jMenuManutencoes.setText("Manutenções");
-        jMenuGestao.add(jMenuManutencoes);
-
-        jMenuSolicitacoes.setText("Solicitações");
-
-        jMenuItemSolicitacoesCompras.setText("Compras");
-        jMenuSolicitacoes.add(jMenuItemSolicitacoesCompras);
-
-        jMenuItemSolicitacoesManutencao.setText("Manutenção");
-        jMenuSolicitacoes.add(jMenuItemSolicitacoesManutencao);
-
-        jMenuItemSolicitacoesEletrica.setText("Eletrica");
-        jMenuSolicitacoes.add(jMenuItemSolicitacoesEletrica);
-
-        jMenuGestao.add(jMenuSolicitacoes);
-
-        jMenuGarantias.setText("Garantias");
-
-        jMenuItemComputadores.setText("Computadores");
-        jMenuGarantias.add(jMenuItemComputadores);
-
-        jMenuGestao.add(jMenuGarantias);
-
-        jMenuBarMenu.add(jMenuGestao);
-
-        jMenuInformacoes.setText("Informações ");
-
-        jMenu12.setText("Gráficos");
-
-        jMenuItem10.setText("Fat. Impressão");
-        jMenu12.add(jMenuItem10);
-
-        jMenuItem11.setText("Computadores");
-        jMenu12.add(jMenuItem11);
-
-        jMenuInformacoes.add(jMenu12);
-
-        jMenu13.setText("Relatórios");
-
-        jMenu15.setText("Computadores");
-
-        jMenu18.setText("Inventários");
-
-        jMenuItem12.setText("Computadores");
-        jMenu18.add(jMenuItem12);
-
-        jMenuItem13.setText("Comp. por Estado");
-        jMenu18.add(jMenuItem13);
-
-        jMenu15.add(jMenu18);
-
-        jMenu19.setText("Garantias");
-        jMenu15.add(jMenu19);
-
-        jMenu13.add(jMenu15);
-
-        jMenu16.setText("Impressoras");
-
-        jMenuItem14.setText("Fat. Impressões");
-        jMenu16.add(jMenuItem14);
-
-        jMenuItem15.setText("Lista Impressoras");
-        jMenu16.add(jMenuItem15);
-
-        jMenu13.add(jMenu16);
-
-        jMenu17.setText("Compras");
-
-        jMenuItem16.setText("Compras Concluídas");
-        jMenu17.add(jMenuItem16);
-
-        jMenuItem17.setText("Compras Pendentes");
-        jMenu17.add(jMenuItem17);
-
-        jMenuItem18.setText("Compras Canceladas");
-        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem18ActionPerformed(evt);
-            }
-        });
-        jMenu17.add(jMenuItem18);
-
-        jMenu13.add(jMenu17);
-
-        jMenuInformacoes.add(jMenu13);
-
-        jMenu14.setText("Ajuda");
-        jMenuInformacoes.add(jMenu14);
-
-        jMenuBarMenu.add(jMenuInformacoes);
+        getContentPane().add(jbtnCliente);
+        jbtnCliente.setBounds(20, 200, 340, 160);
 
         jMenuSair.setText("Sair");
+        jMenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuSairMouseClicked(evt);
+            }
+        });
         jMenuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuSairActionPerformed(evt);
@@ -363,26 +118,18 @@ public class Menu extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBarMenu);
 
-        setSize(new java.awt.Dimension(1250, 820));
+        setSize(new java.awt.Dimension(789, 480));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItemFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFornecedoresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemFornecedoresActionPerformed
-
     private void jMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSairActionPerformed
-
-        System.exit(0);
-
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair do sistema?");
+        if (resposta == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_jMenuSairActionPerformed
 
-    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem18ActionPerformed
-
-    private void jButtonCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarUsuarioActionPerformed
-
+    private void jbtnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUsuarioActionPerformed
         try {
             JFrame UsuarioView = null;
             try {
@@ -394,60 +141,48 @@ public class Menu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }//GEN-LAST:event_jbtnUsuarioActionPerformed
 
-    }//GEN-LAST:event_jButtonCadastrarUsuarioActionPerformed
-
-    private void jMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUsuariosActionPerformed
-
+    private void jbtnChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnChamadoActionPerformed
+        JFrame chaView = null;
         try {
-            JFrame UsuarioView = null;
-            try {
-                UsuarioView = new UsuarioView();
-            } catch (ParseException ex) {
-                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            UsuarioView.setVisible(true);
+            chaView = new ChamadoView();
         } catch (SQLException ex) {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        chaView.setVisible(true);
+        
 
-    }//GEN-LAST:event_jMenuUsuariosActionPerformed
+    }//GEN-LAST:event_jbtnChamadoActionPerformed
 
-    private void jButtonChamadosAbertosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonChamadosAbertosActionPerformed
+    private void jbtnFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnFuncionarioActionPerformed
+        
+        JFrame funView = null;
+        try {
+            funView = new FuncionarioView();
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        funView.setVisible(true);
 
-        JFrame ChamadoAberto;
-        ChamadoAberto = new ChamadoAberto();
-        ChamadoAberto.setVisible(true);
+    }//GEN-LAST:event_jbtnFuncionarioActionPerformed
 
-    }//GEN-LAST:event_jButtonChamadosAbertosActionPerformed
+    private void jbtnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnClienteActionPerformed
+        JFrame cliView = null;
+        try {
+            cliView = new ClienteView();
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cliView.setVisible(true);
+    }//GEN-LAST:event_jbtnClienteActionPerformed
 
-    private void jButtonRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRelatoriosActionPerformed
-
-        JFrame RelatorioChamado = new RelatorioChamado();
-        RelatorioChamado.setVisible(true);
-
-    }//GEN-LAST:event_jButtonRelatoriosActionPerformed
-
-    private void jMenuItemChamadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemChamadosActionPerformed
-
-        JFrame ChamadoAberto = new ChamadoAberto();
-        ChamadoAberto.setVisible(true);
-
-    }//GEN-LAST:event_jMenuItemChamadosActionPerformed
-
-    private void jButtonSuporteAndamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuporteAndamentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSuporteAndamentoActionPerformed
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-
-        JFrame RelatorioHistorico = new RelatorioHistorico();
-        RelatorioHistorico.setVisible(true);
-    }//GEN-LAST:event_jButton13ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jMenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSairMouseClicked
+        int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair do sistema?");
+        if (resposta == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jMenuSairMouseClicked
 
     /**
      * @param args the command line arguments
@@ -482,66 +217,17 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new Menu(true).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JButton jButtonCadastrarUsuario;
-    private javax.swing.JButton jButtonChamadosAbertos;
-    private javax.swing.JButton jButtonHistorico;
-    private javax.swing.JButton jButtonRelatorios;
-    private javax.swing.JButton jButtonSuporteAndamento;
-    private com.toedter.calendar.JCalendar jCalendar1;
-    private javax.swing.JMenu jMenu12;
-    private javax.swing.JMenu jMenu13;
-    private javax.swing.JMenu jMenu14;
-    private javax.swing.JMenu jMenu15;
-    private javax.swing.JMenu jMenu16;
-    private javax.swing.JMenu jMenu17;
-    private javax.swing.JMenu jMenu18;
-    private javax.swing.JMenu jMenu19;
     private javax.swing.JMenuBar jMenuBarMenu;
-    private javax.swing.JMenu jMenuCadastro;
-    private javax.swing.JMenu jMenuEntidades;
-    private javax.swing.JMenu jMenuEquipamentos;
-    private javax.swing.JMenu jMenuGarantias;
-    private javax.swing.JMenu jMenuGestao;
-    private javax.swing.JMenu jMenuImpressoras;
-    private javax.swing.JMenu jMenuInformacoes;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItemChamados;
-    private javax.swing.JMenuItem jMenuItemComputadores;
-    private javax.swing.JMenuItem jMenuItemContatos;
-    private javax.swing.JMenuItem jMenuItemEquipComputadores;
-    private javax.swing.JMenuItem jMenuItemFornecedores;
-    private javax.swing.JMenuItem jMenuItemMissoes;
-    private javax.swing.JMenuItem jMenuItemNobreaks;
-    private javax.swing.JMenuItem jMenuItemSolicitacoesCompras;
-    private javax.swing.JMenuItem jMenuItemSolicitacoesEletrica;
-    private javax.swing.JMenuItem jMenuItemSolicitacoesManutencao;
-    private javax.swing.JMenu jMenuManutencoes;
     private javax.swing.JMenu jMenuSair;
-    private javax.swing.JMenu jMenuSolicitacoes;
-    private javax.swing.JMenuItem jMenuUsuarios;
+    private javax.swing.JButton jbtnChamado;
+    private javax.swing.JButton jbtnCliente;
+    private javax.swing.JButton jbtnFuncionario;
+    private javax.swing.JButton jbtnUsuario;
     // End of variables declaration//GEN-END:variables
 }

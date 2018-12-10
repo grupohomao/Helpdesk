@@ -13,6 +13,7 @@ import br.com.helpdesk.model.pessoa.PessoaJuridica;
 public class Funcionario {
 
     private int codigo;
+    private String nome;
     private Usuario usuario;
     private Cargo cargo;
     private String ativo;
@@ -38,6 +39,21 @@ public class Funcionario {
     public Funcionario() {
     }
 
+    public Funcionario(int codigo, String nome, Cargo cargo) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.cargo = cargo;
+    }       
+
+    public Funcionario(int codigo, String nome) {
+        this.codigo = codigo;
+        this.nome = nome;
+    }
+
+    public Funcionario(String nome) {
+        this.nome = nome;
+    }
+    
     public int getCodigo() {
         return codigo;
     }
@@ -86,6 +102,14 @@ public class Funcionario {
         this.pj = pj;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
     @Override
     public String toString() {
         return "Funcionario{" + "codigo=" + codigo + ", usuario=" + usuario + ", cargo=" + cargo + ", ativo=" + ativo + ", pf=" + pf + ", pj=" + pj + '}';

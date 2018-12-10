@@ -9,7 +9,7 @@ USE helpdesk;
 /*Tabelas de Tipos(Catagorias):*/
 
 CREATE TABLE Niveis (
-    id_nivel TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_nivel INT UNSIGNED NOT NULL AUTO_INCREMENT,
     nivel_descricao VARCHAR(20) NOT NULL,
     nivel_forca TINYINT(10) NOT NULL,
     nivel_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
@@ -53,7 +53,6 @@ CREATE TABLE Emails (
     UNIQUE (email_descricao),
     PRIMARY KEY (id_email)
 );
-
 
 /** Usuários */
 CREATE TABLE Usuarios (
@@ -137,35 +136,10 @@ CREATE TABLE Chamados (
     id_equipamento INT UNSIGNED NOT NULL,
     id_cliente INT UNSIGNED NOT NULL,
     id_funcionario INT UNSIGNED NOT NULL,
-    chamado_situacao ENUM('S', 'N') DEFAULT 'N',
+    chamado_situacao ENUM('S', 'N') DEFAULT 'S',
     chamado_descricao LONGTEXT NOT NULL,
     chamado_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
     PRIMARY KEY (id_chamado)
-);
-
-/** Chamados_Técnicos */
-CREATE TABLE Chamados_Tecnicos (
-    id_chamado INT UNSIGNED NOT NULL,
-    id_funcionario INT UNSIGNED NOT NULL
-);
-
-/** Base_Conhecimento */
-CREATE TABLE Base_Conhecimento (
-    id_base_conhecimento INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    id_ocorrencia INT UNSIGNED NOT NULL,
-    base_conhecimento_descricao LONGTEXT NOT NULL,
-    base_conhecimento_causa LONGTEXT NOT NULL,
-    base_conhecimento_efeito LONGTEXT NOT NULL,
-    base_conhecimento_solucao LONGTEXT NOT NULL,
-    base_conhecimento_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP (),
-    PRIMARY KEY (id_base_conhecimento)
-);
-
-/** Base_Conhecimento_Chamados */
-CREATE TABLE Base_Conhecimento_Chamados (
-    id_base_conhecimento INT UNSIGNED NOT NULL,
-    id_chamado INT UNSIGNED NOT NULL,
-    base_conhecimento_chamados_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ()
 );
 
 /**Relacionamentos*/
@@ -175,15 +149,35 @@ ALTER TABLE Usuarios
 ADD CONSTRAINT fk_Usu_Niv_id_nivel FOREIGN KEY(id_nivel)
 REFERENCES Niveis(id_nivel);
 
-/*Funcionarios - Usuarios*/
-ALTER TABLE Funcionarios
-ADD CONSTRAINT fk_Fun_Usu_id_usuario FOREIGN KEY(id_usuario)
+/*Pessoas - Usuários*/
+ALTER TABLE Pessoas
+ADD CONSTRAINT fk_usu_pes FOREIGN KEY(id_usuario)
 REFERENCES Usuarios(id_usuario);
 
-/*Funcionarios - Cargos*/
+/*Pessoas - Endereços*/
+ALTER TABLE Enderecos
+ADD CONSTRAINT fk_end_pes FOREIGN KEY(id_pessoa)
+REFERENCES Pessoas(id_pessoa);
+
+/*Pessoas - Telefone*/
+ALTER TABLE Telefones
+ADD CONSTRAINT fk_tel_pes FOREIGN KEY(id_pessoa)
+REFERENCES Pessoas(id_pessoa);
+
+/*Pessoas - Emails*/
+ALTER TABLE Emails
+ADD CONSTRAINT fk_ema_pes FOREIGN KEY(id_pessoa)
+REFERENCES Pessoas(id_pessoa);
+
+/*Funcionarios - Pessoas*/
 ALTER TABLE Funcionarios
-ADD CONSTRAINT fk_Fun_Car_id_cargo FOREIGN KEY(id_cargo)
-REFERENCES Cargos(id_cargo);
+ADD CONSTRAINT fk_fun_pes FOREIGN KEY(id_pessoa)
+REFERENCES Pessoas(id_pessoa);
+
+/*Clientes - Pessoas*/
+ALTER TABLE Clientes
+ADD CONSTRAINT fk_cli_pes FOREIGN KEY(id_pessoa)
+REFERENCES Pessoas(id_pessoa);
 
 /*Chamados - Equipamentos*/
 ALTER TABLE Chamados
@@ -192,30 +186,5 @@ REFERENCES Equipamentos(id_equipamento);
 
 /*Chamados - Ocorrencias*/
 ALTER TABLE Chamados
-ADD CONSTRAINT fk_Cha_Oco_id_ocorrencia FOREIGN KEY(id_ocorrencia)
+ADD CONSTRAINT fk_oco_cha FOREIGN KEY(id_ocorrencia)
 REFERENCES Ocorrencias(id_ocorrencia);
-
-/*Chamados_Tecnicos - Tecnicos*/
-ALTER TABLE Chamados_Tecnicos
-ADD CONSTRAINT fk_CT_Cha_id_chamado FOREIGN KEY(id_chamado)
-REFERENCES Chamados(id_chamado);
-
-/*Chamados_Tecnicos - Funcionarios*/
-ALTER TABLE Chamados_Tecnicos
-ADD CONSTRAINT fk_CT_Fun_id_funcionario FOREIGN KEY(id_funcionario)
-REFERENCES Funcionarios(id_funcionario);
-
-/*Base_Conhecimento - Ocorrencias*/
-ALTER TABLE Base_Conhecimento
-ADD CONSTRAINT fk_BC_Oco_id_ocorrencia FOREIGN KEY(id_ocorrencia)
-REFERENCES Ocorrencias(id_ocorrencia);
-
-/*Base_Conhecimento_Chamados - Chamados*/
-ALTER TABLE Base_Conhecimento_Chamados
-ADD CONSTRAINT fk_BCC_BC_id_base_conhecimento FOREIGN KEY(id_base_conhecimento)
-REFERENCES Base_Conhecimento(id_base_conhecimento);
-
-/*Base_Conhecimento_Chamados - Chamados*/
-ALTER TABLE Base_Conhecimento_Chamados
-ADD CONSTRAINT fk_BCC_Cha_id_chamado FOREIGN KEY(id_chamado)
-REFERENCES Chamados(id_chamado);

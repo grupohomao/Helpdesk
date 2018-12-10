@@ -2,7 +2,7 @@
 * São os comandos que interagem com os dados dentro das tabelas.
 */
 
-/*Tipos*/
+/*Niveis - Obrigatório*/
 INSERT INTO Niveis (nivel_descricao, nivel_forca) 
 VALUES
 ('Selecione', 0),
@@ -14,11 +14,39 @@ VALUES
 ('Gerente', 5),
 ('Auxiliar', 4),
 ('Cliente', 1);
-truncate Niveis;
 
-INSERT INTO Mail_Type (mail_type_type) 
-VALUES('Pessoal'), ('Comercial'), ('Default');
-SELECT * FROM Mail_Type;
+/*Usuarios - Obrigatório*/
+INSERT INTO Usuarios (usuario_descricao, usuario_senha, id_nivel) 
+VALUES
+('root', 'root', 3);
 
-INSERT INTO Phone_Type (phone_type_type) 
-VALUES('Celular'), ('Fixo'), ('Default');
+/*Ocorrências - Obrigatório*/
+INSERT INTO Ocorrencias (ocorrencia_descricao) 
+VALUES
+('Suporte'), 
+('Manutenção'),
+('Visita Técnica'), 
+('Devolução');
+
+/*Equipamentos - Equipamentos*/
+INSERT INTO Equipamentos (equipamento_descricao) 
+VALUES
+('Computador'), 
+('Placa de rede'), 
+('Placa de som'), 
+('Placa de video'), 
+('roteador'),
+('Teclado'),
+('Mouse'), 
+('Caixa de som');
+
+/*Cargos - Obrigatório*/
+INSERT INTO Cargos (cargo_descricao) 
+VALUES
+('Desenvolvedor'), 
+('Analista'),
+('Técnico'), 
+('Gerente'), 
+('Auxiliar'),
+('Supervisor');
+

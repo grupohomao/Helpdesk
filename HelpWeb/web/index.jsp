@@ -3,13 +3,15 @@
     Created on : 08/12/2018, 17:13:58
     Author     : Ricardo Guntzell
 --%>
+
 <%@page import="br.com.helpdesk.session.Sessao"%>
 <%
-    if(Sessao.getSessao().getStatusLogin()){
+    if (Sessao.getSessao().getStatusLogin()) {
         Sessao.getSessao().setStatusLogin(false);
-    }    
+    }
     System.out.println(Sessao.getSessao().getStatusLogin());
 %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -39,7 +41,7 @@
     <body>
         <form method="POST" class="form-signin frmLogin" action="app/dashboard.jsp">
             <div class="text-center mb-4">
-                <img class="mb-4" src="source/img/login-logo.png" alt="" height="150">
+                <img class="mb-4" src="source/img/login-logo.jpg" alt="" height="150">
             </div>
 
             <div class="form-group">
